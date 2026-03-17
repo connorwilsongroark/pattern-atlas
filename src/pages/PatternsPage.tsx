@@ -1,5 +1,12 @@
+import { useMemo, useState } from "react";
 import { patterns, groupPatternsByCategory } from "../content/patterns";
 import { PatternCard } from "../features/patterns/PatternCard";
+import { PatternFilterBar } from "../features/patterns/PatternFilterBar";
+import { PatternResultsSummary } from "../features/patterns/PatternResultsSummary";
+import {
+  defaultPatternFilters,
+  filterPatterns,
+} from "../features/patterns/patternFilters";
 
 function Section({
   title,
@@ -29,10 +36,18 @@ function Section({
 }
 
 export function PatternsPage() {
-  const grouped = groupPatternsByCategory(patterns);
+  const [filters, setFilters] = useState(defaultPatternFilters);
+
+  const filteredPatterns = useMemo(() => {
+    return filterPatterns(patterns, filters);
+  }, [filters]);
+
+  const grouped = useMemo(() => {
+    return groupPatternsByCategory(filteredPatterns);
+  }, [filteredPatterns]);
 
   return (
-    <div className='mx-auto max-w-6xl space-y-12 px-4 py-10'>
+    <div className='mx-auto max-w-6xl space-y-8 px-4 py-10'>
       <header className='max-w-3xl space-y-4'>
         <h1 className='text-4xl font-bold text-slate-950'>Design Patterns</h1>
         <p className='text-lg text-slate-700'>
@@ -41,23 +56,44 @@ export function PatternsPage() {
         </p>
       </header>
 
-      <Section
-        title='🟢 Must Know'
-        description='Core patterns every developer should understand early in their career.'
-        items={grouped["must-know"]}
+      <PatternFilterBar
+        filters={filters}
+        onChange={setFilters}
+        onReset={() => setFilters(defaultPatternFilters)}
       />
 
-      <Section
-        title='🔵 Good to Know'
-        description='Important patterns that deepen your understanding as systems grow.'
-        items={grouped["good-to-know"]}
-      />
+      <PatternResultsSummary count={filteredPatterns.length} />
 
-      <Section
-        title='🟡 De-emphasize'
-        description='Patterns that are less commonly needed in modern systems.'
-        items={grouped["de-emphasize"]}
-      />
+      {filteredPatterns.length === 0 ? (
+        <section className='rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center'>
+          <h2 className='text-xl font-semibold text-slate-900'>
+            No patterns matched
+          </h2>
+          <p className='mt-2 text-slate-600'>
+            Try adjusting your search or clearing one of the filters.
+          </p>
+        </section>
+      ) : (
+        <div className='space-y-12'>
+          <Section
+            title='🟢 Must Know'
+            description='Core patterns every developer should understand early in their career.'
+            items={grouped["must-know"]}
+          />
+
+          <Section
+            title='🔵 Good to Know'
+            description='Important patterns that deepen your understanding as systems grow.'
+            items={grouped["good-to-know"]}
+          />
+
+          <Section
+            title='🟡 De-emphasize'
+            description='Patterns that are less commonly needed in modern systems.'
+            items={grouped["de-emphasize"]}
+          />
+        </div>
+      )}
     </div>
   );
 }

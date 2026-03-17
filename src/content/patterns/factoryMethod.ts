@@ -16,7 +16,7 @@ export const factoryMethodPattern: Pattern = {
 
   solution:
     "Move object creation into a factory method so the rest of the system depends on the abstraction or returned contract instead of knowing the exact concrete type being constructed.",
-
+  tags: ["creation", "object-creation", "abstraction", "instantiation"],
   whenToUse: [
     "You create different implementations of the same interface",
     "You want to centralize creation logic",

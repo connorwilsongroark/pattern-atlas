@@ -17,6 +17,7 @@ export const strategyPattern: Pattern = {
 
   solution:
     "Extract each behavior into its own strategy implementation and let the consuming object depend on an abstraction rather than concrete branching logic.",
+  tags: ["behavior", "composition", "polymorphism", "conditional-logic"],
 
   whenToUse: [
     "You have multiple ways to perform the same task",

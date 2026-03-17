@@ -17,6 +17,7 @@ export const commandPattern: Pattern = {
 
   solution:
     "Wrap each request in a command object that contains the information needed to perform the action. A handler or executor then runs the command.",
+  tags: ["actions", "queueing", "requests", "undo", "deferred-execution"],
 
   whenToUse: [
     "You want to queue or defer work",

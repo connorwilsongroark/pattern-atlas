@@ -17,7 +17,7 @@ export const statePattern: Pattern = {
 
   solution:
     "Represent each meaningful state as its own object or implementation, and let the main object delegate behavior to the current state. As the state changes, behavior changes cleanly with it.",
-
+  tags: ["state", "behavior", "transitions", "conditional-logic"],
   whenToUse: [
     "Behavior changes significantly based on current state",
     "You have large state-based conditionals",

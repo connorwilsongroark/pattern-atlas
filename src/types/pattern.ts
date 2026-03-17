@@ -28,6 +28,8 @@ export type Pattern = {
   problem: string;
   solution: string;
 
+  tags: string[];
+
   whenToUse: string[];
   whenNotToUse: string[];
   benefits: string[];

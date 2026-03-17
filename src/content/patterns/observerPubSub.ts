@@ -17,6 +17,7 @@ export const observerPubSubPattern: Pattern = {
 
   solution:
     "Let interested listeners subscribe to events, and let the publisher emit notifications without knowing exactly who is listening. This decouples the source of an event from its downstream reactions.",
+  tags: ["events", "pub-sub", "observer", "decoupling", "messaging"],
 
   whenToUse: [
     "One event should trigger multiple reactions",

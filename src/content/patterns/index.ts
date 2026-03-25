@@ -1,9 +1,22 @@
 import type { Pattern } from "../../types/pattern";
+import { adapterPattern } from "./adapter";
+import { builderPattern } from "./builder";
+import { circuitBreakerPattern } from "./circuitBreaker";
 import { commandPattern } from "./command";
+import { cqrsPattern } from "./cqrs";
+import { decoratorPattern } from "./decorator";
+import { dependencyInjectionPattern } from "./dependencyInjection";
+import { domainEventsPattern } from "./domainEvents";
+import { facadePattern } from "./facade";
 import { factoryMethodPattern } from "./factoryMethod";
 import { observerPubSubPattern } from "./observerPubSub";
+import { outboxPattern } from "./outbox";
+import { repositoryPattern } from "./repository";
+import { serviceLayerPattern } from "./serviceLayer";
 import { statePattern } from "./state";
 import { strategyPattern } from "./strategy";
+import { unitOfWorkPattern } from "./unitOfWork";
+import { visitorPattern } from "./visitor";
 
 export const patterns: Pattern[] = [
   strategyPattern,
@@ -11,6 +24,19 @@ export const patterns: Pattern[] = [
   observerPubSubPattern,
   commandPattern,
   statePattern,
+  dependencyInjectionPattern,
+  decoratorPattern,
+  serviceLayerPattern,
+  unitOfWorkPattern,
+  builderPattern,
+  circuitBreakerPattern,
+  visitorPattern,
+  repositoryPattern,
+  facadePattern,
+  adapterPattern,
+  cqrsPattern,
+  domainEventsPattern,
+  outboxPattern,
 ];
 
 export function getPatternBySlug(slug: string): Pattern | undefined {

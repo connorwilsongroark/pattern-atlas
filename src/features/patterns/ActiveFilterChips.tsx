@@ -10,6 +10,7 @@ type ActiveFilterChipsProps = {
   onClearAll: () => void;
 };
 
+// And individual selected filter, with a button to remove the filter
 function Chip({ label, onRemove }: { label: string; onRemove: () => void }) {
   return (
     <button
@@ -22,12 +23,14 @@ function Chip({ label, onRemove }: { label: string; onRemove: () => void }) {
     </button>
   );
 }
-
+// Shows which filters are currently active and provides a way for the user to remove selected filters
 export function ActiveFilterChips({
+  // current filter state
   search,
   category,
   careerLevel,
   difficulty,
+  // actions to mutate filter state
   onClearSearch,
   onClearCategory,
   onClearCareerLevel,
@@ -40,6 +43,7 @@ export function ActiveFilterChips({
     careerLevel !== "all" ||
     difficulty !== "all";
 
+  // if no active filters, don't display any
   if (!hasActiveFilters) return null;
 
   return (

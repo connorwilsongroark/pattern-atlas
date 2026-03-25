@@ -5,6 +5,7 @@ type LinkBadgeProps = {
   children: React.ReactNode;
 };
 
+// A clickable link, styled as a badge. Currently used for linking to other design patterns from a list of badges.
 export function LinkBadge({ to, children }: LinkBadgeProps) {
   const sharedClassName =
     "inline-flex rounded-full px-3 py-1 text-sm font-medium";

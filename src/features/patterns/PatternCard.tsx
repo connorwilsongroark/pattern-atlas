@@ -13,6 +13,7 @@ function Badge({ children }: { children: React.ReactNode }) {
   );
 }
 
+// Summary of the details of an individual design pattern. When clicked, navigates to the page that fully explains the design pattern.
 export function PatternCard({ pattern }: PatternCardProps) {
   return (
     <Link

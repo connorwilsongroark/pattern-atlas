@@ -5,6 +5,7 @@ import type {
   PatternDifficulty,
 } from "../../types/pattern";
 
+// Shape of a filter object
 export type PatternFilters = {
   search: string;
   category: PatternCategory | "all";
@@ -12,6 +13,7 @@ export type PatternFilters = {
   difficulty: PatternDifficulty | "all";
 };
 
+// Default state of the patterns (no filters applied)
 export const defaultPatternFilters: PatternFilters = {
   search: "",
   category: "all",
@@ -19,6 +21,7 @@ export const defaultPatternFilters: PatternFilters = {
   difficulty: "all",
 };
 
+/** Determines whether the given string is a valid pattern category */
 function isCategory(value: string): value is PatternCategory {
   return (
     value === "must-know" ||
@@ -27,16 +30,19 @@ function isCategory(value: string): value is PatternCategory {
   );
 }
 
+/** Determines whether the given string is a valid career level */
 function isCareerLevel(value: string): value is CareerLevel {
   return value === "early" || value === "mid" || value === "senior";
 }
 
+/** Determines whether the given string is a valid difficulty */
 function isDifficulty(value: string): value is PatternDifficulty {
   return (
     value === "beginner" || value === "intermediate" || value === "advanced"
   );
 }
 
+/** Extracts and validates the filter categories & criteria from the URL. */
 export function getFiltersFromSearchParams(
   searchParams: URLSearchParams,
 ): PatternFilters {
@@ -53,6 +59,7 @@ export function getFiltersFromSearchParams(
   };
 }
 
+/** Constructs URL search params based on the selected pattern filters. */
 export function getSearchParamsFromFilters(
   filters: PatternFilters,
 ): URLSearchParams {
@@ -102,6 +109,7 @@ function matchesSearch(pattern: Pattern, rawSearch: string): boolean {
   return haystack.includes(search);
 }
 
+/** Returns a list of patterns that satisfy the given search criteria (applied filters) */
 export function filterPatterns(
   patterns: Pattern[],
   filters: PatternFilters,

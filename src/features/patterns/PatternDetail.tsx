@@ -39,6 +39,7 @@ function Badge({ children }: { children: React.ReactNode }) {
   );
 }
 
+// The page content associated with an individual design pattern. Details all data relevant to the selected design pattern.
 export function PatternDetail({ pattern }: PatternDetailProps) {
   return (
     <div className='mx-auto max-w-4xl space-y-6 px-4 py-8'>

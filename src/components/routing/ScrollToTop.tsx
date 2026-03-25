@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+// Scrolls the page to the top when navigating between design patterns on the Patterns page
 export function ScrollToTop() {
   const { pathname } = useLocation();
 

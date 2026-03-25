@@ -18,6 +18,7 @@ import { strategyPattern } from "./strategy";
 import { unitOfWorkPattern } from "./unitOfWork";
 import { visitorPattern } from "./visitor";
 
+// Expose list of patterns to the application
 export const patterns: Pattern[] = [
   strategyPattern,
   factoryMethodPattern,

@@ -1,17 +1,22 @@
 import type { ChangeEvent } from "react";
 import type { PatternFilters } from "./patternFilters";
 
+// Receives currently applied filters, how to update the filters, and the action to reset all.
 type PatternFilterBarProps = {
   filters: PatternFilters;
   onChange: (next: PatternFilters) => void;
   onReset: () => void;
 };
 
+// The interactive bar for setting and resetting applied filters.
 export function PatternFilterBar({
   filters,
   onChange,
   onReset,
 }: PatternFilterBarProps) {
+  /** Generic updater. Receives a key, like "search" or "category" and a new value. Creates a new filters object and calls the onChange method.
+   * For example, update("search", "factory") => onChange({ ...filters, search: "factory"});
+   */
   function update<K extends keyof PatternFilters>(
     key: K,
     value: PatternFilters[K],
@@ -22,6 +27,7 @@ export function PatternFilterBar({
     });
   }
 
+  // These events take the DOM event, extract the event.target.value, then call update w/ that data.
   function handleSearchChange(event: ChangeEvent<HTMLInputElement>) {
     update("search", event.target.value);
   }

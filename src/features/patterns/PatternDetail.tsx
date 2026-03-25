@@ -1,6 +1,7 @@
-import { patternExists } from "../../content/patterns";
+import { getPatternBySlug, patternExists } from "../../content/patterns";
 import type { Pattern } from "../../types/pattern";
 import { LinkBadge } from "./LinkBadge";
+import { Link } from "react-router-dom";
 
 type PatternDetailProps = {
   pattern: Pattern;
@@ -160,6 +161,28 @@ export function PatternDetail({ pattern }: PatternDetailProps) {
             </div>
           ) : (
             <p>No confusion notes yet.</p>
+          )}
+        </SectionCard>
+
+        <SectionCard title='Compare with'>
+          {pattern.relatedPatterns.filter((slug) => patternExists(slug))
+            .length > 0 ? (
+            <div className='flex flex-wrap gap-2'>
+              {pattern.relatedPatterns
+                .map((slug) => getPatternBySlug(slug))
+                .filter((relatedPattern) => relatedPattern !== undefined)
+                .map((relatedPattern) => (
+                  <Link
+                    key={relatedPattern.slug}
+                    to={`/compare/${pattern.slug}/${relatedPattern.slug}`}
+                    className='inline-flex rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900'
+                  >
+                    Compare with {relatedPattern.name}
+                  </Link>
+                ))}
+            </div>
+          ) : (
+            <p>No comparisons available yet.</p>
           )}
         </SectionCard>
       </div>

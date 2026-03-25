@@ -40,10 +40,24 @@ export const patterns: Pattern[] = [
   outboxPattern,
 ];
 
+/** Get the pattern by the supplied string */
 export function getPatternBySlug(slug: string): Pattern | undefined {
   return patterns.find((pattern) => pattern.slug === slug);
 }
 
+/** Get the list of patterns based on the list of supplied strings */
+export function getPatternsBySlug(slugs: string[]): Pattern[] {
+  return slugs
+    .map((slug) => getPatternBySlug(slug))
+    .filter((pattern): pattern is Pattern => pattern !== undefined);
+}
+
+/** Return a list of patterns that can be compared to the current pattern (by slug) */
+export function getComparablePatterns(currentSlug: string): Pattern[] {
+  return patterns.filter((pattern) => pattern.slug !== currentSlug);
+}
+
+/** Return a boolean indicating whether or not the pattern exists */
 export function patternExists(slug: string): boolean {
   return patterns.some((pattern) => pattern.slug === slug);
 }

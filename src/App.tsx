@@ -3,6 +3,7 @@ import { ScrollToTop } from "./components/routing/ScrollToTop";
 import { HomePage } from "./pages/HomePage";
 import { PatternsPage } from "./pages/PatternsPage";
 import { PatternDetailPage } from "./pages/PatternDetailPage";
+import { ComparePage } from "./pages/ComparePage";
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/patterns' element={<PatternsPage />} />
           <Route path='/patterns/:slug' element={<PatternDetailPage />} />
+          <Route
+            path='/compare/:leftSlug/:rightSlug'
+            element={<ComparePage />}
+          />
         </Routes>
       </main>
     </div>

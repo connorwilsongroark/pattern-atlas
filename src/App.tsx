@@ -4,6 +4,7 @@ import { HomePage } from "./pages/HomePage";
 import { PatternsPage } from "./pages/PatternsPage";
 import { PatternDetailPage } from "./pages/PatternDetailPage";
 import { ComparePage } from "./pages/ComparePage";
+import { QuizPage } from "./pages/QuizPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <nav className='flex gap-6 text-sm font-medium text-slate-700'>
             <Link to='/'>Home</Link>
             <Link to='/patterns'>Patterns</Link>
+            <Link to='/quiz'>Quiz</Link>
           </nav>
         </div>
       </header>
@@ -31,6 +33,7 @@ function App() {
             path='/compare/:leftSlug/:rightSlug'
             element={<ComparePage />}
           />
+          <Route path='/quiz' element={<QuizPage />} />
         </Routes>
       </main>
     </div>

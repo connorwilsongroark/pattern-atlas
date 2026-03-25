@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+html {
+  /* Fixes issue w/ content shifting on pages with scrollbar */
+  scrollbar-gutter: stable;
+}

@@ -1,11 +1,16 @@
-import { useMemo, useState } from "react";
-import { patterns, groupPatternsByCategory } from "../content/patterns";
+import { useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
+import { groupPatternsByCategory, patterns } from "../content/patterns";
+import { ActiveFilterChips } from "../features/patterns/ActiveFilterChips";
 import { PatternCard } from "../features/patterns/PatternCard";
 import { PatternFilterBar } from "../features/patterns/PatternFilterBar";
 import { PatternResultsSummary } from "../features/patterns/PatternResultsSummary";
 import {
   defaultPatternFilters,
   filterPatterns,
+  getFiltersFromSearchParams,
+  getSearchParamsFromFilters,
+  type PatternFilters,
 } from "../features/patterns/patternFilters";
 
 function Section({
@@ -36,7 +41,11 @@ function Section({
 }
 
 export function PatternsPage() {
-  const [filters, setFilters] = useState(defaultPatternFilters);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const filters = useMemo(() => {
+    return getFiltersFromSearchParams(searchParams);
+  }, [searchParams]);
 
   const filteredPatterns = useMemo(() => {
     return filterPatterns(patterns, filters);
@@ -45,6 +54,21 @@ export function PatternsPage() {
   const grouped = useMemo(() => {
     return groupPatternsByCategory(filteredPatterns);
   }, [filteredPatterns]);
+
+  function updateFilters(nextFilters: PatternFilters) {
+    setSearchParams(getSearchParamsFromFilters(nextFilters));
+  }
+
+  function patchFilters(partial: Partial<PatternFilters>) {
+    updateFilters({
+      ...filters,
+      ...partial,
+    });
+  }
+
+  function resetFilters() {
+    setSearchParams(getSearchParamsFromFilters(defaultPatternFilters));
+  }
 
   return (
     <div className='mx-auto max-w-6xl space-y-8 px-4 py-10'>
@@ -58,8 +82,20 @@ export function PatternsPage() {
 
       <PatternFilterBar
         filters={filters}
-        onChange={setFilters}
-        onReset={() => setFilters(defaultPatternFilters)}
+        onChange={updateFilters}
+        onReset={resetFilters}
+      />
+
+      <ActiveFilterChips
+        search={filters.search}
+        category={filters.category}
+        careerLevel={filters.careerLevel}
+        difficulty={filters.difficulty}
+        onClearSearch={() => patchFilters({ search: "" })}
+        onClearCategory={() => patchFilters({ category: "all" })}
+        onClearCareerLevel={() => patchFilters({ careerLevel: "all" })}
+        onClearDifficulty={() => patchFilters({ difficulty: "all" })}
+        onClearAll={resetFilters}
       />
 
       <PatternResultsSummary count={filteredPatterns.length} />

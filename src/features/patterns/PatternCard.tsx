@@ -31,7 +31,6 @@ export function PatternCard({ pattern }: PatternCardProps) {
 
       <p className='mt-2 text-slate-700'>{pattern.summary}</p>
 
-      {/* 👇 This is the upgrade */}
       <div className='mt-4 rounded-lg bg-slate-50 p-3'>
         <p className='text-sm font-medium text-slate-800'>
           💡 {pattern.keyTakeaway}

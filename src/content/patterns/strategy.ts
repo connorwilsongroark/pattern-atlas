@@ -102,5 +102,94 @@ const premiumCheckout = new CheckoutService(
 console.log(standardCheckout.getSubtotal(100)); // 100
 console.log(premiumCheckout.getSubtotal(100));  // 90`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public interface IPricingStrategy
+{
+    decimal CalculateSubtotal(decimal amount);
+}
+
+public class StandardPricingStrategy : IPricingStrategy
+{
+    public decimal CalculateSubtotal(decimal amount)
+    {
+        return amount;
+    }
+}
+
+public class PremiumPricingStrategy : IPricingStrategy
+{
+    public decimal CalculateSubtotal(decimal amount)
+    {
+        return amount * 0.9m;
+    }
+}
+
+public class CheckoutService
+{
+    private readonly IPricingStrategy _strategy;
+
+    public CheckoutService(IPricingStrategy strategy)
+    {
+        _strategy = strategy;
+    }
+
+    public decimal GetSubtotal(decimal amount)
+    {
+        return _strategy.CalculateSubtotal(amount);
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        var standardCheckout = new CheckoutService(new StandardPricingStrategy());
+        var premiumCheckout = new CheckoutService(new PremiumPricingStrategy());
+
+        Console.WriteLine(standardCheckout.GetSubtotal(100)); // 100
+        Console.WriteLine(premiumCheckout.GetSubtotal(100));  // 90
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class PricingStrategy:
+    def calculate_subtotal(self, amount: float) -> float:
+        raise NotImplementedError()
+
+
+class StandardPricingStrategy(PricingStrategy):
+    def calculate_subtotal(self, amount: float) -> float:
+        return amount
+
+
+class PremiumPricingStrategy(PricingStrategy):
+    def calculate_subtotal(self, amount: float) -> float:
+        return amount * 0.9
+
+
+class CheckoutService:
+    def __init__(self, strategy: PricingStrategy):
+        self.strategy = strategy
+
+    def get_subtotal(self, amount: float) -> float:
+        return self.strategy.calculate_subtotal(amount)
+
+
+# Usage
+standard_checkout = CheckoutService(StandardPricingStrategy())
+premium_checkout = CheckoutService(PremiumPricingStrategy())
+
+print(standard_checkout.get_subtotal(100))  # 100
+print(premium_checkout.get_subtotal(100))   # 90`,
+    },
   ],
 };

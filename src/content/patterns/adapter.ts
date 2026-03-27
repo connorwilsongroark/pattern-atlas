@@ -89,5 +89,66 @@ const notifier: Notifier = new EmailSenderAdapter(
 
 notifier.send("Hello", "person@example.com");`,
     },
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public class LegacyEmailSender
+{
+    public void SendEmail(string address, string body)
+    {
+        Console.WriteLine($"Legacy send: {address} {body}");
+    }
+}
+
+public interface INotifier
+{
+    void Send(string message, string recipient);
+}
+
+public class EmailSenderAdapter : INotifier
+{
+    private readonly LegacyEmailSender _legacy;
+
+    public EmailSenderAdapter(LegacyEmailSender legacy)
+    {
+        _legacy = legacy;
+    }
+
+    public void Send(string message, string recipient)
+    {
+        _legacy.SendEmail(recipient, message);
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        INotifier notifier = new EmailSenderAdapter(new LegacyEmailSender());
+        notifier.Send("Hello", "person@example.com");
+    }
+}`,
+    },
+    {
+      title: "Python example",
+      language: "py",
+      code: `class LegacyEmailSender:
+    def send_email(self, address: str, body: str) -> None:
+        print(f"Legacy send: {address} {body}")
+
+
+class EmailSenderAdapter:
+    def __init__(self, legacy: LegacyEmailSender) -> None:
+        self.legacy = legacy
+
+    def send(self, message: str, recipient: str) -> None:
+        self.legacy.send_email(recipient, message)
+
+
+notifier = EmailSenderAdapter(LegacyEmailSender())
+notifier.send("Hello", "person@example.com")`,
+    },
   ],
 };

@@ -95,5 +95,115 @@ class UserService {
   }
 }`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+using System.Collections.Generic;
+
+public class User
+{
+    public string Id { get; set; } = "";
+    public string Email { get; set; } = "";
+}
+
+public interface IUserRepository
+{
+    User? GetById(string id);
+    void Save(User user);
+}
+
+public class InMemoryUserRepository : IUserRepository
+{
+    private readonly Dictionary<string, User> _users = new();
+
+    public User? GetById(string id)
+    {
+        return _users.ContainsKey(id) ? _users[id] : null;
+    }
+
+    public void Save(User user)
+    {
+        _users[user.Id] = user;
+    }
+}
+
+public class UserService
+{
+    private readonly IUserRepository _repository;
+
+    public UserService(IUserRepository repository)
+    {
+        _repository = repository;
+    }
+
+    public void Register(User user)
+    {
+        _repository.Save(user);
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        var repo = new InMemoryUserRepository();
+        var service = new UserService(repo);
+
+        service.Register(new User { Id = "u_123", Email = "person@example.com" });
+
+        var user = repo.GetById("u_123");
+        Console.WriteLine(user?.Email);
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class User:
+    def __init__(self, user_id: str, email: str):
+        self.id = user_id
+        self.email = email
+
+
+class UserRepository:
+    def get_by_id(self, user_id: str):
+        raise NotImplementedError()
+
+    def save(self, user: User):
+        raise NotImplementedError()
+
+
+class InMemoryUserRepository(UserRepository):
+    def __init__(self):
+        self.users = {}
+
+    def get_by_id(self, user_id: str):
+        return self.users.get(user_id)
+
+    def save(self, user: User):
+        self.users[user.id] = user
+
+
+class UserService:
+    def __init__(self, repository: UserRepository):
+        self.repository = repository
+
+    def register(self, user: User):
+        self.repository.save(user)
+
+
+# Usage
+repo = InMemoryUserRepository()
+service = UserService(repo)
+
+service.register(User("u_123", "person@example.com"))
+
+user = repo.get_by_id("u_123")
+print(user.email if user else None)`,
+    },
   ],
 };

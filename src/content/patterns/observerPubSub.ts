@@ -103,5 +103,90 @@ bus.emit("user.created", {
   email: "person@example.com",
 });`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+using System.Collections.Generic;
+
+public class EventBus
+{
+    private readonly Dictionary<string, List<Action<object>>> _handlers = new();
+
+    public void On<T>(string eventName, Action<T> handler)
+    {
+        if (!_handlers.ContainsKey(eventName))
+        {
+            _handlers[eventName] = new List<Action<object>>();
+        }
+
+        _handlers[eventName].Add(payload => handler((T)payload));
+    }
+
+    public void Emit<T>(string eventName, T payload)
+    {
+        if (!_handlers.ContainsKey(eventName))
+        {
+            return;
+        }
+
+        foreach (var handler in _handlers[eventName])
+        {
+            handler(payload!);
+        }
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        var bus = new EventBus();
+
+        bus.On<(string id, string email)>("user.created", payload =>
+        {
+            Console.WriteLine($"Send welcome email to {payload.email}");
+        });
+
+        bus.On<(string id, string email)>("user.created", payload =>
+        {
+            Console.WriteLine($"Create CRM record for {payload.id}");
+        });
+
+        bus.Emit("user.created", ("u_123", "person@example.com"));
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class EventBus:
+    def __init__(self):
+        self.handlers = {}
+
+    def on(self, event_name: str, handler):
+        if event_name not in self.handlers:
+            self.handlers[event_name] = []
+        self.handlers[event_name].append(handler)
+
+    def emit(self, event_name: str, payload):
+        for handler in self.handlers.get(event_name, []):
+            handler(payload)
+
+
+# Usage
+bus = EventBus()
+
+bus.on("user.created", lambda payload: print(f"Send welcome email to {payload['email']}"))
+bus.on("user.created", lambda payload: print(f"Create CRM record for {payload['id']}"))
+
+bus.emit("user.created", {
+    "id": "u_123",
+    "email": "person@example.com"
+})`,
+    },
   ],
 };

@@ -103,5 +103,101 @@ const user = new UserBuilder()
   .asAdmin()
   .build();`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public class User
+{
+    public string Email { get; set; } = "";
+    public string? DisplayName { get; set; }
+    public bool IsAdmin { get; set; }
+}
+
+public class UserBuilder
+{
+    private readonly User _user = new User();
+
+    public UserBuilder WithEmail(string email)
+    {
+        _user.Email = email;
+        return this;
+    }
+
+    public UserBuilder WithDisplayName(string displayName)
+    {
+        _user.DisplayName = displayName;
+        return this;
+    }
+
+    public UserBuilder AsAdmin()
+    {
+        _user.IsAdmin = true;
+        return this;
+    }
+
+    public User Build()
+    {
+        return _user;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        var user = new UserBuilder()
+            .WithEmail("person@example.com")
+            .WithDisplayName("Connor")
+            .AsAdmin()
+            .Build();
+
+        Console.WriteLine(user.Email);
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class User:
+    def __init__(self, email="", display_name=None, is_admin=False):
+        self.email = email
+        self.display_name = display_name
+        self.is_admin = is_admin
+
+
+class UserBuilder:
+    def __init__(self):
+        self._user = User()
+
+    def with_email(self, email: str):
+        self._user.email = email
+        return self
+
+    def with_display_name(self, display_name: str):
+        self._user.display_name = display_name
+        return self
+
+    def as_admin(self):
+        self._user.is_admin = True
+        return self
+
+    def build(self) -> User:
+        return self._user
+
+
+user = (
+    UserBuilder()
+    .with_email("person@example.com")
+    .with_display_name("Connor")
+    .as_admin()
+    .build()
+)
+
+print(user.email)`,
+    },
   ],
 };

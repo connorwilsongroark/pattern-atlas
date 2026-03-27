@@ -90,5 +90,83 @@ class UserService {
 const service = new UserService(new InMemoryUserRepository());
 service.registerUser("person@example.com");`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public interface IUserRepository
+{
+    void Save(string email);
+}
+
+public class InMemoryUserRepository : IUserRepository
+{
+    public void Save(string email)
+    {
+        Console.WriteLine($"Saved user: {email}");
+    }
+}
+
+public class UserService
+{
+    private readonly IUserRepository _repository;
+
+    public UserService(IUserRepository repository)
+    {
+        _repository = repository;
+    }
+
+    public void RegisterUser(string email)
+    {
+        if (!email.Contains("@"))
+        {
+            throw new Exception("Invalid email");
+        }
+
+        _repository.Save(email);
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        var service = new UserService(new InMemoryUserRepository());
+        service.RegisterUser("person@example.com");
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class UserRepository:
+    def save(self, email: str):
+        raise NotImplementedError()
+
+
+class InMemoryUserRepository(UserRepository):
+    def save(self, email: str):
+        print(f"Saved user: {email}")
+
+
+class UserService:
+    def __init__(self, repository: UserRepository):
+        self.repository = repository
+
+    def register_user(self, email: str):
+        if "@" not in email:
+            raise Exception("Invalid email")
+
+        self.repository.save(email)
+
+
+# Usage
+service = UserService(InMemoryUserRepository())
+service.register_user("person@example.com")`,
+    },
   ],
 };

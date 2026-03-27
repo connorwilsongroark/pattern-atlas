@@ -92,5 +92,84 @@ function createLogger(environment: "development" | "production"): Logger {
 const logger = createLogger("development");
 logger.log("App started");`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public interface ILogger
+{
+    void Log(string message);
+}
+
+public class ConsoleLogger : ILogger
+{
+    public void Log(string message)
+    {
+        Console.WriteLine($"[console] {message}");
+    }
+}
+
+public class FileLogger : ILogger
+{
+    public void Log(string message)
+    {
+        Console.WriteLine($"[file] {message}");
+    }
+}
+
+public static class LoggerFactory
+{
+    public static ILogger CreateLogger(string environment)
+    {
+        if (environment == "development")
+        {
+            return new ConsoleLogger();
+        }
+
+        return new FileLogger();
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        var logger = LoggerFactory.CreateLogger("development");
+        logger.Log("App started");
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class Logger:
+    def log(self, message: str):
+        raise NotImplementedError()
+
+
+class ConsoleLogger(Logger):
+    def log(self, message: str):
+        print(f"[console] {message}")
+
+
+class FileLogger(Logger):
+    def log(self, message: str):
+        print(f"[file] {message}")
+
+
+def create_logger(environment: str) -> Logger:
+    if environment == "development":
+        return ConsoleLogger()
+    return FileLogger()
+
+
+# Usage
+logger = create_logger("development")
+logger.log("App started")`,
+    },
   ],
 };

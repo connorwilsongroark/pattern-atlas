@@ -117,5 +117,124 @@ order.setState(new ShippedState());
 console.log(order.getStatus()); // Shipped
 console.log(order.canCancel()); // false`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public interface IOrderState
+{
+    bool CanCancel();
+    string Label();
+}
+
+public class PendingState : IOrderState
+{
+    public bool CanCancel() => true;
+    public string Label() => "Pending";
+}
+
+public class ShippedState : IOrderState
+{
+    public bool CanCancel() => false;
+    public string Label() => "Shipped";
+}
+
+public class Order
+{
+    private IOrderState _state;
+
+    public Order(IOrderState state)
+    {
+        _state = state;
+    }
+
+    public string GetStatus()
+    {
+        return _state.Label();
+    }
+
+    public bool CanCancel()
+    {
+        return _state.CanCancel();
+    }
+
+    public void SetState(IOrderState state)
+    {
+        _state = state;
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        var order = new Order(new PendingState());
+
+        Console.WriteLine(order.GetStatus()); // Pending
+        Console.WriteLine(order.CanCancel()); // true
+
+        order.SetState(new ShippedState());
+
+        Console.WriteLine(order.GetStatus()); // Shipped
+        Console.WriteLine(order.CanCancel()); // false
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class OrderState:
+    def can_cancel(self) -> bool:
+        raise NotImplementedError()
+
+    def label(self) -> str:
+        raise NotImplementedError()
+
+
+class PendingState(OrderState):
+    def can_cancel(self) -> bool:
+        return True
+
+    def label(self) -> str:
+        return "Pending"
+
+
+class ShippedState(OrderState):
+    def can_cancel(self) -> bool:
+        return False
+
+    def label(self) -> str:
+        return "Shipped"
+
+
+class Order:
+    def __init__(self, state: OrderState):
+        self.state = state
+
+    def get_status(self) -> str:
+        return self.state.label()
+
+    def can_cancel(self) -> bool:
+        return self.state.can_cancel()
+
+    def set_state(self, state: OrderState):
+        self.state = state
+
+
+# Usage
+order = Order(PendingState())
+
+print(order.get_status())  # Pending
+print(order.can_cancel())  # True
+
+order.set_state(ShippedState())
+
+print(order.get_status())  # Shipped
+print(order.can_cancel())  # False`,
+    },
   ],
 };

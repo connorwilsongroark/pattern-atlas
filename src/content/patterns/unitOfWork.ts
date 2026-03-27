@@ -99,5 +99,104 @@ class OrderService {
   }
 }`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public class UnitOfWork
+{
+    public void Begin()
+    {
+        Console.WriteLine("Begin transaction");
+    }
+
+    public void Commit()
+    {
+        Console.WriteLine("Commit transaction");
+    }
+
+    public void Rollback()
+    {
+        Console.WriteLine("Rollback transaction");
+    }
+}
+
+public class OrderService
+{
+    private readonly UnitOfWork _uow;
+
+    public OrderService(UnitOfWork uow)
+    {
+        _uow = uow;
+    }
+
+    public void PlaceOrder()
+    {
+        _uow.Begin();
+
+        try
+        {
+            Console.WriteLine("Save order");
+            Console.WriteLine("Reserve inventory");
+            Console.WriteLine("Write audit log");
+
+            _uow.Commit();
+        }
+        catch
+        {
+            _uow.Rollback();
+            throw new Exception("Order placement failed");
+        }
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        var service = new OrderService(new UnitOfWork());
+        service.PlaceOrder();
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class UnitOfWork:
+    def begin(self):
+        print("Begin transaction")
+
+    def commit(self):
+        print("Commit transaction")
+
+    def rollback(self):
+        print("Rollback transaction")
+
+
+class OrderService:
+    def __init__(self, uow: UnitOfWork):
+        self.uow = uow
+
+    def place_order(self):
+        self.uow.begin()
+
+        try:
+            print("Save order")
+            print("Reserve inventory")
+            print("Write audit log")
+            self.uow.commit()
+        except Exception:
+            self.uow.rollback()
+            raise Exception("Order placement failed")
+
+
+# Usage
+service = OrderService(UnitOfWork())
+service.place_order()`,
+    },
   ],
 };

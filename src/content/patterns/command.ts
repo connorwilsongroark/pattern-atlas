@@ -88,5 +88,75 @@ class CommandBus {
 const bus = new CommandBus();
 bus.dispatch(new CreateUserCommand("person@example.com"));`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public interface ICommand
+{
+    void Execute();
+}
+
+public class CreateUserCommand : ICommand
+{
+    private readonly string _email;
+
+    public CreateUserCommand(string email)
+    {
+        _email = email;
+    }
+
+    public void Execute()
+    {
+        Console.WriteLine($"Creating user: {_email}");
+    }
+}
+
+public class CommandBus
+{
+    public void Dispatch(ICommand command)
+    {
+        command.Execute();
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        var bus = new CommandBus();
+        bus.Dispatch(new CreateUserCommand("person@example.com"));
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class Command:
+    def execute(self):
+        raise NotImplementedError()
+
+
+class CreateUserCommand(Command):
+    def __init__(self, email: str):
+        self.email = email
+
+    def execute(self):
+        print(f"Creating user: {self.email}")
+
+
+class CommandBus:
+    def dispatch(self, command: Command):
+        command.execute()
+
+
+# Usage
+bus = CommandBus()
+bus.dispatch(CreateUserCommand("person@example.com"))`,
+    },
   ],
 };

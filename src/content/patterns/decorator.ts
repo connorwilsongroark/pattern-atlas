@@ -93,5 +93,77 @@ class LoggingNotifier implements Notifier {
 const notifier = new LoggingNotifier(new EmailNotifier());
 notifier.send("Hello");`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public interface INotifier
+{
+    void Send(string message);
+}
+
+public class EmailNotifier : INotifier
+{
+    public void Send(string message)
+    {
+        Console.WriteLine($"Email: {message}");
+    }
+}
+
+public class LoggingNotifier : INotifier
+{
+    private readonly INotifier _inner;
+
+    public LoggingNotifier(INotifier inner)
+    {
+        _inner = inner;
+    }
+
+    public void Send(string message)
+    {
+        Console.WriteLine("Logging before send");
+        _inner.Send(message);
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        INotifier notifier = new LoggingNotifier(new EmailNotifier());
+        notifier.Send("Hello");
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class Notifier:
+    def send(self, message: str):
+        raise NotImplementedError()
+
+
+class EmailNotifier(Notifier):
+    def send(self, message: str):
+        print(f"Email: {message}")
+
+
+class LoggingNotifier(Notifier):
+    def __init__(self, inner: Notifier):
+        self.inner = inner
+
+    def send(self, message: str):
+        print("Logging before send")
+        self.inner.send(message)
+
+
+# Usage
+notifier = LoggingNotifier(EmailNotifier())
+notifier.send("Hello")`,
+    },
   ],
 };

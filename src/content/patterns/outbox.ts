@@ -78,5 +78,71 @@ class OutboxProcessor {
   }
 }`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public class OrderService
+{
+    public void PlaceOrder()
+    {
+        Console.WriteLine("Begin transaction");
+        Console.WriteLine("Insert order");
+        Console.WriteLine("Insert outbox row: order.placed");
+        Console.WriteLine("Commit transaction");
+    }
+}
+
+public class OutboxProcessor
+{
+    public void PublishPending()
+    {
+        Console.WriteLine("Read unpublished outbox rows");
+        Console.WriteLine("Publish messages");
+        Console.WriteLine("Mark rows as published");
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        var service = new OrderService();
+        service.PlaceOrder();
+
+        var processor = new OutboxProcessor();
+        processor.PublishPending();
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class OrderService:
+    def place_order(self):
+        print("Begin transaction")
+        print("Insert order")
+        print("Insert outbox row: order.placed")
+        print("Commit transaction")
+
+
+class OutboxProcessor:
+    def publish_pending(self):
+        print("Read unpublished outbox rows")
+        print("Publish messages")
+        print("Mark rows as published")
+
+
+# Usage
+service = OrderService()
+service.place_order()
+
+processor = OutboxProcessor()
+processor.publish_pending()`,
+    },
   ],
 };

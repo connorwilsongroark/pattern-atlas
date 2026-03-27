@@ -76,5 +76,59 @@ class Square {
   }
 }`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public interface IVisitor
+{
+    void VisitCircle(Circle circle);
+    void VisitSquare(Square square);
+}
+
+public interface IShape
+{
+    void Accept(IVisitor visitor);
+}
+
+public class Circle : IShape
+{
+    public void Accept(IVisitor visitor)
+    {
+        visitor.VisitCircle(this);
+    }
+}
+
+public class Square : IShape
+{
+    public void Accept(IVisitor visitor)
+    {
+        visitor.VisitSquare(this);
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class Visitor:
+    def visit_circle(self, circle):
+        raise NotImplementedError()
+
+    def visit_square(self, square):
+        raise NotImplementedError()
+
+
+class Circle:
+    def accept(self, visitor: Visitor):
+        visitor.visit_circle(self)
+
+
+class Square:
+    def accept(self, visitor: Visitor):
+        visitor.visit_square(self)`,
+    },
   ],
 };

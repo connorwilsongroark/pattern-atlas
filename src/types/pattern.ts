@@ -6,7 +6,7 @@ export type PatternDifficulty = "beginner" | "intermediate" | "advanced";
 
 export type CodeExample = {
   title: string;
-  language: "ts" | "tsx" | "cs" | "sql" | "text";
+  language: "ts" | "tsx" | "cs" | "py" | "sql" | "text";
   code: string;
 };
 

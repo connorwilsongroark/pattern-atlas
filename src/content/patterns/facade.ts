@@ -96,5 +96,87 @@ const dashboard = new DashboardFacade(
 
 dashboard.initializeDashboard();`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public class AuthService
+{
+    public void SignIn()
+    {
+        Console.WriteLine("Signing in");
+    }
+}
+
+public class ProfileService
+{
+    public void LoadProfile()
+    {
+        Console.WriteLine("Loading profile");
+    }
+}
+
+public class DashboardFacade
+{
+    private readonly AuthService _auth;
+    private readonly ProfileService _profile;
+
+    public DashboardFacade(AuthService auth, ProfileService profile)
+    {
+        _auth = auth;
+        _profile = profile;
+    }
+
+    public void InitializeDashboard()
+    {
+        _auth.SignIn();
+        _profile.LoadProfile();
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        var dashboard = new DashboardFacade(
+            new AuthService(),
+            new ProfileService()
+        );
+
+        dashboard.InitializeDashboard();
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class AuthService:
+    def sign_in(self):
+        print("Signing in")
+
+
+class ProfileService:
+    def load_profile(self):
+        print("Loading profile")
+
+
+class DashboardFacade:
+    def __init__(self, auth: AuthService, profile: ProfileService):
+        self.auth = auth
+        self.profile = profile
+
+    def initialize_dashboard(self):
+        self.auth.sign_in()
+        self.profile.load_profile()
+
+
+# Usage
+dashboard = DashboardFacade(AuthService(), ProfileService())
+dashboard.initialize_dashboard()`,
+    },
   ],
 };

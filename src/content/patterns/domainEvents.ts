@@ -83,5 +83,79 @@ const event: OrderPlaced = {
 
 publish(event);`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public abstract class DomainEvent
+{
+    public string Type { get; }
+    public DateTime OccurredAt { get; }
+
+    protected DomainEvent(string type)
+    {
+        Type = type;
+        OccurredAt = DateTime.UtcNow;
+    }
+}
+
+public class OrderPlaced : DomainEvent
+{
+    public string OrderId { get; }
+
+    public OrderPlaced(string orderId)
+        : base("order.placed")
+    {
+        OrderId = orderId;
+    }
+}
+
+public static class EventPublisher
+{
+    public static void Publish(DomainEvent evt)
+    {
+        Console.WriteLine($"Publishing event: {evt.Type}");
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        var evt = new OrderPlaced("ord_123");
+        EventPublisher.Publish(evt);
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `from datetime import datetime
+
+
+class DomainEvent:
+    def __init__(self, event_type: str):
+        self.type = event_type
+        self.occurred_at = datetime.utcnow()
+
+
+class OrderPlaced(DomainEvent):
+    def __init__(self, order_id: str):
+        super().__init__("order.placed")
+        self.order_id = order_id
+
+
+def publish(event: DomainEvent):
+    print(f"Publishing event: {event.type}")
+
+
+# Usage
+event = OrderPlaced("ord_123")
+publish(event)`,
+    },
   ],
 };

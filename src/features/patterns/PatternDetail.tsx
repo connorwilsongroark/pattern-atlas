@@ -3,6 +3,7 @@ import type { Pattern } from "../../types/pattern";
 import { LinkBadge } from "./LinkBadge";
 import { Link } from "react-router-dom";
 import { Badge } from "../../components/ui/Badge";
+import { CodeTabs } from "./CodeTabs";
 
 type PatternDetailProps = {
   pattern: Pattern;
@@ -110,16 +111,10 @@ export function PatternDetail({ pattern }: PatternDetailProps) {
       {pattern.codeExamples && pattern.codeExamples.length > 0 && (
         <SectionCard title='Code examples'>
           <div className='space-y-4'>
-            {pattern.codeExamples.map((example) => (
-              <div key={example.title} className='space-y-2'>
-                <h3 className='font-semibold text-[var(--color-text)]'>
-                  {example.title}
-                </h3>
-                <pre className='overflow-x-auto rounded-lg bg-slate-950 p-4 text-sm text-slate-100'>
-                  <code>{example.code}</code>
-                </pre>
-              </div>
-            ))}
+            <CodeTabs
+              examples={pattern.codeExamples}
+              patternSlug={pattern.slug}
+            />
           </div>
         </SectionCard>
       )}

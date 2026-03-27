@@ -88,5 +88,79 @@ const userService = new UserService(logger);
 
 userService.createUser("person@example.com");`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public interface ILogger
+{
+    void Log(string message);
+}
+
+public class ConsoleLogger : ILogger
+{
+    public void Log(string message)
+    {
+        Console.WriteLine(message);
+    }
+}
+
+public class UserService
+{
+    private readonly ILogger _logger;
+
+    public UserService(ILogger logger)
+    {
+        _logger = logger;
+    }
+
+    public void CreateUser(string email)
+    {
+        _logger.Log($"Creating user: {email}");
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        ILogger logger = new ConsoleLogger();
+        var userService = new UserService(logger);
+
+        userService.CreateUser("person@example.com");
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class Logger:
+    def log(self, message: str):
+        raise NotImplementedError()
+
+
+class ConsoleLogger(Logger):
+    def log(self, message: str):
+        print(message)
+
+
+class UserService:
+    def __init__(self, logger: Logger):
+        self.logger = logger
+
+    def create_user(self, email: str):
+        self.logger.log(f"Creating user: {email}")
+
+
+# Usage
+logger = ConsoleLogger()
+user_service = UserService(logger)
+
+user_service.create_user("person@example.com")`,
+    },
   ],
 };

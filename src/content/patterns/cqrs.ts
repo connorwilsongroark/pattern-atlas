@@ -85,5 +85,81 @@ class OrderQueryService {
   }
 }`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public class CreateOrderCommand
+{
+    public string CustomerId { get; set; } = "";
+    public decimal Total { get; set; }
+}
+
+public class OrderCommandHandler
+{
+    public void Handle(CreateOrderCommand command)
+    {
+        Console.WriteLine($"Validating and creating order: {command.CustomerId}, {command.Total}");
+    }
+}
+
+public class OrderQueryService
+{
+    public void GetOrderSummary(string orderId)
+    {
+        Console.WriteLine($"Returning read-optimized order summary for {orderId}");
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        var command = new CreateOrderCommand
+        {
+            CustomerId = "cust-123",
+            Total = 99.99m
+        };
+
+        var handler = new OrderCommandHandler();
+        handler.Handle(command);
+
+        var queryService = new OrderQueryService();
+        queryService.GetOrderSummary("order-456");
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class CreateOrderCommand:
+    def __init__(self, customer_id: str, total: float):
+        self.customer_id = customer_id
+        self.total = total
+
+
+class OrderCommandHandler:
+    def handle(self, command: CreateOrderCommand):
+        print(f"Validating and creating order: {command.customer_id}, {command.total}")
+
+
+class OrderQueryService:
+    def get_order_summary(self, order_id: str):
+        print(f"Returning read-optimized order summary for {order_id}")
+
+
+# Usage
+command = CreateOrderCommand("cust-123", 99.99)
+
+handler = OrderCommandHandler()
+handler.handle(command)
+
+query_service = OrderQueryService()
+query_service.get_order_summary("order-456")`,
+    },
   ],
 };

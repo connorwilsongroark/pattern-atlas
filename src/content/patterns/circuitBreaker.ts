@@ -95,5 +95,96 @@ export const circuitBreakerPattern: Pattern = {
   }
 }`,
     },
+
+    {
+      title: "C# example",
+      language: "cs",
+      code: `using System;
+
+public class CircuitBreaker
+{
+    private int _failures = 0;
+    private bool _open = false;
+
+    public void Execute(Action action)
+    {
+        if (_open)
+        {
+            throw new Exception("Circuit is open");
+        }
+
+        try
+        {
+            action();
+            _failures = 0;
+        }
+        catch
+        {
+            _failures++;
+
+            if (_failures >= 3)
+            {
+                _open = true;
+            }
+
+            throw;
+        }
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        var breaker = new CircuitBreaker();
+
+        try
+        {
+            breaker.Execute(() =>
+            {
+                throw new Exception("Failure");
+            });
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}`,
+    },
+
+    {
+      title: "Python example",
+      language: "py",
+      code: `class CircuitBreaker:
+    def __init__(self):
+        self.failures = 0
+        self.open = False
+
+    def execute(self, action):
+        if self.open:
+            raise Exception("Circuit is open")
+
+        try:
+            action()
+            self.failures = 0
+        except Exception as e:
+            self.failures += 1
+
+            if self.failures >= 3:
+                self.open = True
+
+            raise e
+
+
+# Usage
+breaker = CircuitBreaker()
+
+try:
+    breaker.execute(lambda: (_ for _ in ()).throw(Exception("Failure")))
+except Exception as e:
+    print(e)`,
+    },
   ],
 };

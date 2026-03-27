@@ -41,6 +41,7 @@ export function SiteHeader() {
           <nav className='flex items-center gap-2'>
             <NavItem to='/'>Home</NavItem>
             <NavItem to='/patterns'>Patterns</NavItem>
+            <NavItem to='/learning-path'>Learning Path</NavItem>
             <NavItem to='/quiz'>Quiz</NavItem>
           </nav>
 

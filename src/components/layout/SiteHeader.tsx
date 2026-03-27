@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { ThemeToggle } from "../ui/ThemeToggle";
 
 function NavItem({ to, children }: { to: string; children: React.ReactNode }) {
   return (
@@ -36,11 +37,15 @@ export function SiteHeader() {
           </div>
         </NavLink>
 
-        <nav className='flex items-center gap-2'>
-          <NavItem to='/'>Home</NavItem>
-          <NavItem to='/patterns'>Patterns</NavItem>
-          <NavItem to='/quiz'>Quiz</NavItem>
-        </nav>
+        <div className='flex items-center gap-3'>
+          <nav className='flex items-center gap-2'>
+            <NavItem to='/'>Home</NavItem>
+            <NavItem to='/patterns'>Patterns</NavItem>
+            <NavItem to='/quiz'>Quiz</NavItem>
+          </nav>
+
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

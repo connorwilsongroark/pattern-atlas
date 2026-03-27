@@ -17,13 +17,15 @@ function ComparisonSection({
   rightContent: React.ReactNode;
 }) {
   return (
-    <section className='overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm'>
-      <div className='border-b border-slate-200 bg-slate-50 px-6 py-4'>
-        <h2 className='text-lg font-semibold text-slate-950'>{title}</h2>
+    <section className='overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-sm'>
+      <div className='border-b border-[var(--color-border)] bg-[var(--color-surface-alt)] px-6 py-4'>
+        <h2 className='text-lg font-semibold text-[var(--color-text)]'>
+          {title}
+        </h2>
       </div>
 
       <div className='grid gap-0 md:grid-cols-2'>
-        <div className='border-b border-slate-200 p-6 md:border-b-0 md:border-r'>
+        <div className='border-b border-[var(--color-border)] p-6 md:border-b-0 md:border-r md:border-[var(--color-border)]'>
           {leftContent}
         </div>
         <div className='p-6'>{rightContent}</div>
@@ -34,7 +36,7 @@ function ComparisonSection({
 
 function BulletList({ items }: { items: string[] }) {
   return (
-    <ul className='list-disc space-y-2 pl-5 text-slate-700'>
+    <ul className='list-disc space-y-2 pl-5 text-[var(--color-text-muted)]'>
       {items.map((item) => (
         <li key={item}>{item}</li>
       ))}
@@ -54,18 +56,18 @@ function PatternHeader({ pattern }: { pattern: Pattern }) {
       <div>
         <Link
           to={`/patterns/${pattern.slug}`}
-          className='text-3xl font-bold tracking-tight text-slate-950 hover:text-slate-700'
+          className='text-3xl font-bold tracking-tight text-[var(--color-text)] transition hover:text-[var(--color-text-muted)]'
         >
           {pattern.name}
         </Link>
-        <p className='mt-3 text-slate-700'>{pattern.summary}</p>
+        <p className='mt-3 text-[var(--color-text-muted)]'>{pattern.summary}</p>
       </div>
 
-      <div className='rounded-xl bg-slate-50 p-4'>
-        <p className='text-sm font-semibold uppercase tracking-wide text-slate-500'>
+      <div className='rounded-xl bg-[var(--color-surface-alt)] p-4'>
+        <p className='text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]'>
           Key takeaway
         </p>
-        <p className='mt-2 text-slate-800'>{pattern.keyTakeaway}</p>
+        <p className='mt-2 text-[var(--color-text)]'>{pattern.keyTakeaway}</p>
       </div>
     </div>
   );
@@ -82,14 +84,22 @@ export function PatternComparison({ left, right }: PatternComparisonProps) {
 
       <ComparisonSection
         title='Problem'
-        leftContent={<p className='text-slate-700'>{left.problem}</p>}
-        rightContent={<p className='text-slate-700'>{right.problem}</p>}
+        leftContent={
+          <p className='text-[var(--color-text-muted)]'>{left.problem}</p>
+        }
+        rightContent={
+          <p className='text-[var(--color-text-muted)]'>{right.problem}</p>
+        }
       />
 
       <ComparisonSection
         title='Solution'
-        leftContent={<p className='text-slate-700'>{left.solution}</p>}
-        rightContent={<p className='text-slate-700'>{right.solution}</p>}
+        leftContent={
+          <p className='text-[var(--color-text-muted)]'>{left.solution}</p>
+        }
+        rightContent={
+          <p className='text-[var(--color-text-muted)]'>{right.solution}</p>
+        }
       />
 
       <ComparisonSection

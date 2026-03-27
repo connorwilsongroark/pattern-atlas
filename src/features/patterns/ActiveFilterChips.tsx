@@ -10,19 +10,20 @@ type ActiveFilterChipsProps = {
   onClearAll: () => void;
 };
 
-// And individual selected filter, with a button to remove the filter
+// An individual selected filter, with a button to remove the filter
 function Chip({ label, onRemove }: { label: string; onRemove: () => void }) {
   return (
     <button
       type='button'
       onClick={onRemove}
-      className='inline-flex items-center gap-2 rounded-full bg-slate-200 px-3 py-1 text-sm font-medium text-slate-800 transition hover:bg-slate-300'
+      className='inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-3 py-1 text-sm font-medium text-[var(--color-text)] transition hover:bg-[var(--color-border)]'
     >
       <span>{label}</span>
       <span aria-hidden='true'>×</span>
     </button>
   );
 }
+
 // Shows which filters are currently active and provides a way for the user to remove selected filters
 export function ActiveFilterChips({
   // current filter state
@@ -70,7 +71,7 @@ export function ActiveFilterChips({
       <button
         type='button'
         onClick={onClearAll}
-        className='ml-1 text-sm font-medium text-slate-600 underline-offset-2 hover:text-slate-900 hover:underline'
+        className='ml-1 text-sm font-medium text-[var(--color-text-muted)] underline-offset-2 transition hover:text-[var(--color-text)] hover:underline'
       >
         Clear all
       </button>

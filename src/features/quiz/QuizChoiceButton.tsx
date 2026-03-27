@@ -25,9 +25,11 @@ export function QuizChoiceButton({
       ? " border-[var(--color-primary)] bg-[var(--color-surface-alt)] text-[var(--color-text)]"
       : " border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-[var(--color-surface-alt)]";
   } else if (isCorrect) {
-    className += " border-green-600 bg-green-50 text-green-900";
+    className +=
+      " border-[var(--color-success-border)] bg-[var(--color-success-bg)] text-[var(--color-success-text)]";
   } else if (isIncorrect) {
-    className += " border-red-600 bg-red-50 text-red-900";
+    className +=
+      " border-[var(--color-danger-border)] bg-[var(--color-danger-bg)] text-[var(--color-danger-text)]";
   } else {
     className +=
       " border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-muted)]";

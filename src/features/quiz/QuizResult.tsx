@@ -12,24 +12,30 @@ export function QuizResult({
   return (
     <section
       className={`rounded-2xl border p-5 ${
-        isCorrect ? "border-green-200 bg-green-50" : "border-red-200 bg-red-50"
+        isCorrect
+          ? "border-[var(--color-success-border)] bg-[var(--color-success-bg)]"
+          : "border-[var(--color-danger-border)] bg-[var(--color-danger-bg)]"
       }`}
     >
       <h2
         className={`text-lg font-semibold ${
-          isCorrect ? "text-green-900" : "text-red-900"
+          isCorrect
+            ? "text-[var(--color-success-text)]"
+            : "text-[var(--color-danger-text)]"
         }`}
       >
         {isCorrect ? "Correct" : "Not quite"}
       </h2>
 
       {!isCorrect && (
-        <p className='mt-2 text-sm text-slate-800'>
+        <p className='mt-2 text-sm text-[var(--color-text)]'>
           Correct answer: <span className='font-semibold'>{correctAnswer}</span>
         </p>
       )}
 
-      <p className='mt-3 text-sm leading-6 text-slate-700'>{explanation}</p>
+      <p className='mt-3 text-sm leading-6 text-[var(--color-text-muted)]'>
+        {explanation}
+      </p>
     </section>
   );
 }

@@ -14,9 +14,6 @@ export function PatternFilterBar({
   onChange,
   onReset,
 }: PatternFilterBarProps) {
-  /** Generic updater. Receives a key, like "search" or "category" and a new value. Creates a new filters object and calls the onChange method.
-   * For example, update("search", "factory") => onChange({ ...filters, search: "factory"});
-   */
   function update<K extends keyof PatternFilters>(
     key: K,
     value: PatternFilters[K],
@@ -27,7 +24,6 @@ export function PatternFilterBar({
     });
   }
 
-  // These events take the DOM event, extract the event.target.value, then call update w/ that data.
   function handleSearchChange(event: ChangeEvent<HTMLInputElement>) {
     update("search", event.target.value);
   }
@@ -45,12 +41,13 @@ export function PatternFilterBar({
   }
 
   return (
-    <section className='rounded-2xl border border-slate-200 bg-white p-4 shadow-sm'>
+    <section className='rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-sm'>
       <div className='grid gap-4 lg:grid-cols-[2fr_1fr_1fr_1fr_auto]'>
+        {/* Search */}
         <div>
           <label
             htmlFor='pattern-search'
-            className='mb-1 block text-sm font-medium text-slate-700'
+            className='mb-1 block text-sm font-medium text-[var(--color-text-muted)]'
           >
             Search
           </label>
@@ -60,14 +57,15 @@ export function PatternFilterBar({
             value={filters.search}
             onChange={handleSearchChange}
             placeholder='Search by pattern name, concept, or keyword...'
-            className='w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 outline-none transition focus:border-slate-500'
+            className='w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-[var(--color-text)] outline-none transition focus:border-[var(--color-text-muted)]'
           />
         </div>
 
+        {/* Category */}
         <div>
           <label
             htmlFor='pattern-category'
-            className='mb-1 block text-sm font-medium text-slate-700'
+            className='mb-1 block text-sm font-medium text-[var(--color-text-muted)]'
           >
             Category
           </label>
@@ -75,7 +73,7 @@ export function PatternFilterBar({
             id='pattern-category'
             value={filters.category}
             onChange={handleCategoryChange}
-            className='w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none transition focus:border-slate-500'
+            className='w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-[var(--color-text)] outline-none transition focus:border-[var(--color-text-muted)]'
           >
             <option value='all'>All</option>
             <option value='must-know'>Must know</option>
@@ -84,10 +82,11 @@ export function PatternFilterBar({
           </select>
         </div>
 
+        {/* Career level */}
         <div>
           <label
             htmlFor='pattern-career-level'
-            className='mb-1 block text-sm font-medium text-slate-700'
+            className='mb-1 block text-sm font-medium text-[var(--color-text-muted)]'
           >
             Career level
           </label>
@@ -95,7 +94,7 @@ export function PatternFilterBar({
             id='pattern-career-level'
             value={filters.careerLevel}
             onChange={handleCareerLevelChange}
-            className='w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none transition focus:border-slate-500'
+            className='w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-[var(--color-text)] outline-none transition focus:border-[var(--color-text-muted)]'
           >
             <option value='all'>All</option>
             <option value='early'>Early</option>
@@ -104,10 +103,11 @@ export function PatternFilterBar({
           </select>
         </div>
 
+        {/* Difficulty */}
         <div>
           <label
             htmlFor='pattern-difficulty'
-            className='mb-1 block text-sm font-medium text-slate-700'
+            className='mb-1 block text-sm font-medium text-[var(--color-text-muted)]'
           >
             Difficulty
           </label>
@@ -115,7 +115,7 @@ export function PatternFilterBar({
             id='pattern-difficulty'
             value={filters.difficulty}
             onChange={handleDifficultyChange}
-            className='w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none transition focus:border-slate-500'
+            className='w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-[var(--color-text)] outline-none transition focus:border-[var(--color-text-muted)]'
           >
             <option value='all'>All</option>
             <option value='beginner'>Beginner</option>
@@ -124,11 +124,12 @@ export function PatternFilterBar({
           </select>
         </div>
 
+        {/* Reset button */}
         <div className='flex items-end'>
           <button
             type='button'
             onClick={onReset}
-            className='w-full rounded-lg bg-slate-900 px-4 py-2 text-white transition hover:bg-slate-800'
+            className='w-full rounded-lg bg-[var(--color-primary)] px-4 py-2 text-[var(--color-primary-foreground)] transition hover:opacity-90'
           >
             Reset
           </button>

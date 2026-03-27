@@ -27,8 +27,8 @@ function Section({
   return (
     <section className='space-y-4'>
       <div>
-        <h2 className='text-2xl font-bold text-slate-950'>{title}</h2>
-        <p className='mt-1 text-slate-600'>{description}</p>
+        <h2 className='text-2xl font-bold text-[var(--color-text)]'>{title}</h2>
+        <p className='mt-1 text-[var(--color-text-muted)]'>{description}</p>
       </div>
 
       <div className='grid gap-4 md:grid-cols-2'>
@@ -73,8 +73,10 @@ export function PatternsPage() {
   return (
     <div className='mx-auto max-w-6xl space-y-8 px-4 py-10'>
       <header className='max-w-3xl space-y-4'>
-        <h1 className='text-4xl font-bold text-slate-950'>Design Patterns</h1>
-        <p className='text-lg text-slate-700'>
+        <h1 className='text-4xl font-bold text-[var(--color-text)]'>
+          Design Patterns
+        </h1>
+        <p className='text-lg text-[var(--color-text-muted)]'>
           A practical, categorized guide to design patterns used in real-world
           systems—from foundational concepts to advanced architecture.
         </p>
@@ -101,11 +103,11 @@ export function PatternsPage() {
       <PatternResultsSummary count={filteredPatterns.length} />
 
       {filteredPatterns.length === 0 ? (
-        <section className='rounded-2xl border border-dashed border-slate-300 bg-white p-8 text-center'>
-          <h2 className='text-xl font-semibold text-slate-900'>
+        <section className='rounded-2xl border border-dashed border-[var(--color-border)] bg-[var(--color-surface)] p-8 text-center'>
+          <h2 className='text-xl font-semibold text-[var(--color-text)]'>
             No patterns matched
           </h2>
-          <p className='mt-2 text-slate-600'>
+          <p className='mt-2 text-[var(--color-text-muted)]'>
             Try adjusting your search or clearing one of the filters.
           </p>
         </section>

@@ -99,26 +99,36 @@ export function QuizPage() {
     return (
       <div className='mx-auto max-w-3xl space-y-8 px-4 py-10'>
         <header className='space-y-4'>
-          <div className='flex flex-wrap items-center gap-3 text-sm text-slate-600'>
-            <Link to='/' className='hover:text-slate-900'>
+          <div className='flex flex-wrap items-center gap-3 text-sm text-[var(--color-text-muted)]'>
+            <Link to='/' className='transition hover:text-[var(--color-text)]'>
               Home
             </Link>
             <span>/</span>
             <span>Quiz</span>
           </div>
 
-          <h1 className='text-4xl font-bold tracking-tight text-slate-950'>
+          <h1 className='text-4xl font-bold tracking-tight text-[var(--color-text)]'>
             {mode === "review-missed" ? "Review Complete" : "Quiz Complete"}
           </h1>
 
-          <p className='text-lg text-slate-700'>
-            You scored <span className='font-semibold'>{score}</span> out of{" "}
-            <span className='font-semibold'>{totalQuestions}</span>.
+          <p className='text-lg text-[var(--color-text-muted)]'>
+            You scored{" "}
+            <span className='font-semibold text-[var(--color-text)]'>
+              {score}
+            </span>{" "}
+            out of{" "}
+            <span className='font-semibold text-[var(--color-text)]'>
+              {totalQuestions}
+            </span>
+            .
           </p>
 
           {mode === "full" && missedCount > 0 && (
-            <p className='text-slate-600'>
-              You missed <span className='font-semibold'>{missedCount}</span>{" "}
+            <p className='text-[var(--color-text-muted)]'>
+              You missed{" "}
+              <span className='font-semibold text-[var(--color-text)]'>
+                {missedCount}
+              </span>{" "}
               {missedCount === 1 ? "question" : "questions"}.
             </p>
           )}
@@ -126,7 +136,7 @@ export function QuizPage() {
 
         <Card className='p-6'>
           <div className='space-y-4'>
-            <p className='text-slate-700'>
+            <p className='text-[var(--color-text-muted)]'>
               {mode === "review-missed"
                 ? "Nice work. Reviewing missed questions is one of the fastest ways to sharpen pattern recognition."
                 : "Nice work. Keep going until the distinctions between patterns feel intuitive, not memorized."}
@@ -156,7 +166,7 @@ export function QuizPage() {
   if (!currentQuestion) {
     return (
       <div className='mx-auto max-w-3xl px-4 py-10'>
-        <h1 className='text-3xl font-bold text-slate-950'>
+        <h1 className='text-3xl font-bold text-[var(--color-text)]'>
           No quiz questions found
         </h1>
       </div>
@@ -166,8 +176,8 @@ export function QuizPage() {
   return (
     <div className='mx-auto max-w-3xl space-y-8 px-4 py-10'>
       <header className='space-y-4'>
-        <div className='flex flex-wrap items-center gap-3 text-sm text-slate-600'>
-          <Link to='/' className='hover:text-slate-900'>
+        <div className='flex flex-wrap items-center gap-3 text-sm text-[var(--color-text-muted)]'>
+          <Link to='/' className='transition hover:text-[var(--color-text)]'>
             Home
           </Link>
           <span>/</span>
@@ -175,12 +185,12 @@ export function QuizPage() {
         </div>
 
         <div>
-          <h1 className='text-4xl font-bold tracking-tight text-slate-950'>
+          <h1 className='text-4xl font-bold tracking-tight text-[var(--color-text)]'>
             {mode === "review-missed"
               ? "Review Missed Questions"
               : "Design Patterns Quiz"}
           </h1>
-          <p className='mt-2 text-lg text-slate-700'>
+          <p className='mt-2 text-lg text-[var(--color-text-muted)]'>
             {mode === "review-missed"
               ? "Focus on the questions you missed and strengthen the distinctions."
               : "Practice recognizing patterns from realistic software scenarios."}

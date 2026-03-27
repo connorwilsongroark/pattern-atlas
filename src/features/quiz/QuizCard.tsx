@@ -4,6 +4,7 @@ import type { QuizQuestion } from "../../types/quiz";
 import { Badge } from "../../components/ui/Badge";
 import { QuizChoiceButton } from "./QuizChoiceButton";
 import { QuizResult } from "./QuizResult";
+import { Card } from "../../components/ui/Card";
 
 type QuizCardProps = {
   question: QuizQuestion;
@@ -29,7 +30,7 @@ export function QuizCard({
   const isCorrect = selectedChoice === question.correctAnswer;
 
   return (
-    <section className='rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm'>
+    <Card className='p-6'>
       <div className='mb-4 flex flex-wrap items-center gap-2'>
         <Badge>Question {questionNumber}</Badge>
         <Badge>{question.category}</Badge>
@@ -72,6 +73,6 @@ export function QuizCard({
           />
         </div>
       )}
-    </section>
+    </Card>
   );
 }

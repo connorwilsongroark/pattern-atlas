@@ -4,6 +4,9 @@ import { getAllQuizQuestions } from "../content/quiz";
 import { QuizCard } from "../features/quiz/QuizCard";
 import { shuffleArray } from "../features/quiz/quizUtils";
 import type { QuizQuestion } from "../types/quiz";
+import { Button } from "../components/ui/Button";
+import { Card } from "../components/ui/Card";
+import { MutedPanel } from "../components/ui/MutedPanel";
 
 type QuizMode = "full" | "review-missed";
 
@@ -121,7 +124,7 @@ export function QuizPage() {
           )}
         </header>
 
-        <section className='rounded-2xl border border-slate-200 bg-white p-6 shadow-sm'>
+        <Card className='p-6'>
           <div className='space-y-4'>
             <p className='text-slate-700'>
               {mode === "review-missed"
@@ -131,32 +134,21 @@ export function QuizPage() {
 
             <div className='flex flex-wrap gap-3'>
               {mode === "full" && missedQuestionIds.length > 0 && (
-                <button
-                  type='button'
-                  onClick={handleReviewMissed}
-                  className='rounded-lg bg-slate-900 px-4 py-2 text-white transition hover:bg-slate-800'
-                >
+                <Button onClick={handleReviewMissed}>
                   Review missed questions
-                </button>
+                </Button>
               )}
 
-              <button
-                type='button'
-                onClick={handleRestart}
-                className='rounded-lg border border-slate-300 px-4 py-2 text-slate-800 transition hover:bg-slate-50'
-              >
+              <Button variant='secondary' onClick={handleRestart}>
                 Restart full quiz
-              </button>
+              </Button>
 
-              <Link
-                to='/patterns'
-                className='rounded-lg border border-slate-300 px-4 py-2 text-slate-800 transition hover:bg-slate-50'
-              >
+              <Button to='/patterns' variant='secondary'>
                 Browse patterns
-              </Link>
+              </Button>
             </div>
           </div>
-        </section>
+        </Card>
       </div>
     );
   }
@@ -195,9 +187,9 @@ export function QuizPage() {
           </p>
         </div>
 
-        <div className='rounded-xl bg-slate-100 px-4 py-3 text-sm font-medium text-slate-700'>
+        <MutedPanel className='px-4 py-3 text-sm font-medium text-[var(--color-text-muted)]'>
           Score: {score} / {totalQuestions}
-        </div>
+        </MutedPanel>
       </header>
 
       <QuizCard
@@ -211,31 +203,18 @@ export function QuizPage() {
 
       <div className='flex flex-wrap gap-3'>
         {!isSubmitted ? (
-          <button
-            type='button'
-            onClick={handleSubmit}
-            disabled={!selectedChoice}
-            className='rounded-lg bg-slate-900 px-4 py-2 text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50'
-          >
+          <Button onClick={handleSubmit} disabled={!selectedChoice}>
             Submit answer
-          </button>
+          </Button>
         ) : (
-          <button
-            type='button'
-            onClick={handleNext}
-            className='rounded-lg bg-slate-900 px-4 py-2 text-white transition hover:bg-slate-800'
-          >
+          <Button onClick={handleNext}>
             {isLastQuestion ? "Finish quiz" : "Next question"}
-          </button>
+          </Button>
         )}
 
-        <button
-          type='button'
-          onClick={handleConfirmRestart}
-          className='rounded-lg border border-slate-300 px-4 py-2 text-slate-800 transition hover:bg-slate-50'
-        >
+        <Button variant='secondary' onClick={handleConfirmRestart}>
           Restart
-        </button>
+        </Button>
       </div>
     </div>
   );

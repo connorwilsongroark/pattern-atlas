@@ -29,18 +29,18 @@ export function QuizCard({
   const isCorrect = selectedChoice === question.correctAnswer;
 
   return (
-    <section className='rounded-2xl border border-slate-200 bg-white p-6 shadow-sm'>
+    <section className='rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm'>
       <div className='mb-4 flex flex-wrap items-center gap-2'>
         <Badge>Question {questionNumber}</Badge>
         <Badge>{question.category}</Badge>
         <Badge>{question.difficulty}</Badge>
       </div>
 
-      <div className='mb-2 text-sm text-slate-500'>
+      <div className='mb-2 text-sm text-[var(--color-text-muted)]'>
         {questionNumber} of {totalQuestions}
       </div>
 
-      <h1 className='text-2xl font-semibold leading-8 text-slate-950'>
+      <h1 className='text-2xl font-semibold leading-8 text-[var(--color-text)]'>
         {question.prompt}
       </h1>
 

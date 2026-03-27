@@ -5,14 +5,15 @@ type LinkBadgeProps = {
   children: React.ReactNode;
 };
 
-// A clickable link, styled as a badge. Currently used for linking to other design patterns from a list of badges.
 export function LinkBadge({ to, children }: LinkBadgeProps) {
   const sharedClassName =
     "inline-flex rounded-full px-3 py-1 text-sm font-medium";
 
   if (!to) {
     return (
-      <span className={`${sharedClassName} bg-slate-100 text-slate-700`}>
+      <span
+        className={`${sharedClassName} bg-[var(--color-surface-alt)] text-[var(--color-text-muted)]`}
+      >
         {children}
       </span>
     );
@@ -21,7 +22,7 @@ export function LinkBadge({ to, children }: LinkBadgeProps) {
   return (
     <Link
       to={to}
-      className={`${sharedClassName} bg-slate-100 text-slate-700 transition hover:bg-slate-200 hover:text-slate-900`}
+      className={`${sharedClassName} bg-[var(--color-surface-alt)] text-[var(--color-text-muted)] transition hover:brightness-95 hover:text-[var(--color-text)]`}
     >
       {children}
     </Link>

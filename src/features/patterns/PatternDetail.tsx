@@ -2,6 +2,7 @@ import { getPatternBySlug, patternExists } from "../../content/patterns";
 import type { Pattern } from "../../types/pattern";
 import { LinkBadge } from "./LinkBadge";
 import { Link } from "react-router-dom";
+import { Badge } from "../../components/ui/Badge";
 
 type PatternDetailProps = {
   pattern: Pattern;
@@ -15,9 +16,11 @@ function SectionCard({
   children: React.ReactNode;
 }) {
   return (
-    <section className='rounded-xl border border-slate-200 bg-white p-6 shadow-sm'>
-      <h2 className='mb-3 text-xl font-semibold text-slate-900'>{title}</h2>
-      <div className='text-slate-700'>{children}</div>
+    <section className='rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm'>
+      <h2 className='mb-3 text-xl font-semibold text-[var(--color-text)]'>
+        {title}
+      </h2>
+      <div className='text-[var(--color-text-muted)]'>{children}</div>
     </section>
   );
 }
@@ -29,14 +32,6 @@ function BulletList({ items }: { items: string[] }) {
         <li key={item}>{item}</li>
       ))}
     </ul>
-  );
-}
-
-function Badge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className='rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700'>
-      {children}
-    </span>
   );
 }
 
@@ -52,17 +47,17 @@ export function PatternDetail({ pattern }: PatternDetailProps) {
         </div>
 
         <div>
-          <h1 className='text-4xl font-bold tracking-tight text-slate-950'>
+          <h1 className='text-4xl font-bold tracking-tight text-[var(--color-text)]'>
             {pattern.name}
           </h1>
-          <p className='mt-3 text-lg leading-8 text-slate-700'>
+          <p className='mt-3 text-lg leading-8 text-[var(--color-text-muted)]'>
             {pattern.summary}
           </p>
         </div>
       </header>
 
       <SectionCard title='Key takeaway'>
-        <p className='text-lg font-medium text-slate-800'>
+        <p className='text-lg font-medium text-[var(--color-text)]'>
           {pattern.keyTakeaway}
         </p>
       </SectionCard>
@@ -100,10 +95,12 @@ export function PatternDetail({ pattern }: PatternDetailProps) {
           <div className='space-y-4'>
             {pattern.examples.map((example) => (
               <div key={example.title}>
-                <h3 className='font-semibold text-slate-900'>
+                <h3 className='font-semibold text-[var(--color-text)]'>
                   {example.title}
                 </h3>
-                <p className='mt-1 text-slate-700'>{example.body}</p>
+                <p className='mt-1 text-[var(--color-text-muted)]'>
+                  {example.body}
+                </p>
               </div>
             ))}
           </div>
@@ -115,7 +112,7 @@ export function PatternDetail({ pattern }: PatternDetailProps) {
           <div className='space-y-4'>
             {pattern.codeExamples.map((example) => (
               <div key={example.title} className='space-y-2'>
-                <h3 className='font-semibold text-slate-900'>
+                <h3 className='font-semibold text-[var(--color-text)]'>
                   {example.title}
                 </h3>
                 <pre className='overflow-x-auto rounded-lg bg-slate-950 p-4 text-sm text-slate-100'>
@@ -175,7 +172,7 @@ export function PatternDetail({ pattern }: PatternDetailProps) {
                   <Link
                     key={relatedPattern.slug}
                     to={`/compare/${pattern.slug}/${relatedPattern.slug}`}
-                    className='inline-flex rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900'
+                    className='inline-flex rounded-lg border border-[var(--color-border)] px-3 py-2 text-sm font-medium text-[var(--color-text-muted)] transition hover:bg-[var(--color-surface-alt)] hover:text-[var(--color-text)]'
                   >
                     Compare with {relatedPattern.name}
                   </Link>

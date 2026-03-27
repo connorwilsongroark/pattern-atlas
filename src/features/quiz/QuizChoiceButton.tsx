@@ -22,14 +22,15 @@ export function QuizChoiceButton({
 
   if (!showResult) {
     className += isSelected
-      ? " border-slate-900 bg-slate-100 text-slate-950"
-      : " border-slate-300 bg-white text-slate-800 hover:border-slate-400 hover:bg-slate-50";
+      ? " border-[var(--color-primary)] bg-[var(--color-surface-alt)] text-[var(--color-text)]"
+      : " border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-[var(--color-surface-alt)]";
   } else if (isCorrect) {
     className += " border-green-600 bg-green-50 text-green-900";
   } else if (isIncorrect) {
     className += " border-red-600 bg-red-50 text-red-900";
   } else {
-    className += " border-slate-300 bg-white text-slate-500";
+    className +=
+      " border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-muted)]";
   }
 
   return (

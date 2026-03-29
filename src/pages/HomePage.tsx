@@ -20,11 +20,11 @@ function SectionHeading({
           {eyebrow}
         </p>
       )}
-      <h2 className='text-3xl font-bold tracking-tight text-[var(--color-text)]'>
+      <h2 className='text-2xl font-bold tracking-tight text-[var(--color-text)] sm:text-3xl'>
         {title}
       </h2>
       {description && (
-        <p className='text-lg leading-8 text-[var(--color-text-muted)]'>
+        <p className='text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8'>
           {description}
         </p>
       )}
@@ -44,11 +44,13 @@ function FeatureCard({
   cta: string;
 }) {
   return (
-    <div className='rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm'>
-      <h3 className='text-xl font-semibold text-[var(--color-text)]'>
+    <div className='rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm sm:p-6'>
+      <h3 className='text-lg font-semibold text-[var(--color-text)] sm:text-xl'>
         {title}
       </h3>
-      <p className='mt-3 text-[var(--color-text-muted)]'>{description}</p>
+      <p className='mt-3 text-sm text-[var(--color-text-muted)] sm:text-base'>
+        {description}
+      </p>
       <Link
         to={to}
         className='mt-5 inline-flex rounded-lg bg-[var(--color-primary)] px-4 py-2 text-sm font-medium text-[var(--color-primary-foreground)] transition hover:opacity-90'
@@ -83,9 +85,13 @@ function CategoryCard({
         : "text-[var(--color-warning-text)]";
 
   return (
-    <div className={`rounded-2xl border p-6 ${toneClass}`}>
-      <h3 className={`text-xl font-semibold ${titleClass}`}>{title}</h3>
-      <p className='mt-3 text-[var(--color-text-muted)]'>{description}</p>
+    <div className={`rounded-2xl border p-5 sm:p-6 ${toneClass}`}>
+      <h3 className={`text-lg font-semibold sm:text-xl ${titleClass}`}>
+        {title}
+      </h3>
+      <p className='mt-3 text-sm text-[var(--color-text-muted)] sm:text-base'>
+        {description}
+      </p>
     </div>
   );
 }
@@ -98,11 +104,13 @@ function LearningStep({
   description: string;
 }) {
   return (
-    <div className='rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm'>
-      <h3 className='text-xl font-semibold text-[var(--color-text)]'>
+    <div className='rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm sm:p-6'>
+      <h3 className='text-lg font-semibold text-[var(--color-text)] sm:text-xl'>
         {title}
       </h3>
-      <p className='mt-3 text-[var(--color-text-muted)]'>{description}</p>
+      <p className='mt-3 text-sm text-[var(--color-text-muted)] sm:text-base'>
+        {description}
+      </p>
     </div>
   );
 }
@@ -116,25 +124,25 @@ export function HomePage() {
     <div className='bg-[var(--color-bg)] text-[var(--color-text)]'>
       {/* Hero */}
       <section className='border-b border-[var(--color-border)] bg-[var(--color-surface)]'>
-        <div className='mx-auto max-w-6xl px-4 py-20'>
+        <div className='mx-auto max-w-6xl px-4 py-14 sm:py-20'>
           <div className='max-w-4xl space-y-8'>
             <p className='text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-text-muted)]'>
               Practical software architecture
             </p>
 
             <div className='space-y-5'>
-              <h1 className='text-5xl font-bold tracking-tight text-[var(--color-text)] md:text-6xl'>
+              <h1 className='text-3xl font-bold tracking-tight text-[var(--color-text)] sm:text-4xl md:text-6xl'>
                 Learn design patterns the way developers actually use them.
               </h1>
 
-              <p className='max-w-3xl text-xl leading-8 text-[var(--color-text-muted)]'>
+              <p className='max-w-3xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8'>
                 Pattern Atlas is a practical reference for software design
                 patterns, with categorized explanations, side-by-side
                 comparisons, and interactive quizzes to help the ideas stick.
               </p>
             </div>
 
-            <div className='flex flex-wrap gap-3'>
+            <div className='flex flex-col gap-3 sm:flex-row sm:flex-wrap'>
               <Link
                 to='/patterns'
                 className='rounded-lg bg-[var(--color-primary)] px-5 py-3 text-sm font-medium text-[var(--color-primary-foreground)] transition hover:opacity-90'
@@ -149,7 +157,7 @@ export function HomePage() {
               </Link>
             </div>
 
-            <div className='grid gap-4 pt-4 md:grid-cols-3'>
+            <div className='grid gap-3 pt-4 sm:gap-4 md:grid-cols-3'>
               <div className='rounded-xl bg-[var(--color-surface-alt)] p-4'>
                 <p className='text-2xl font-bold text-[var(--color-text)]'>
                   {patterns.length}
@@ -180,7 +188,7 @@ export function HomePage() {
       </section>
 
       {/* Feature Cards */}
-      <section className='mx-auto max-w-6xl px-4 py-16'>
+      <section className='mx-auto max-w-6xl px-4 py-12 sm:py-16'>
         <SectionHeading
           eyebrow='Use the site'
           title='Three ways to learn'
@@ -211,7 +219,7 @@ export function HomePage() {
 
       {/* Featured Patterns */}
       <section className='border-y border-[var(--color-border)] bg-[var(--color-surface)]'>
-        <div className='mx-auto max-w-6xl px-4 py-16'>
+        <div className='mx-auto max-w-6xl px-4 py-12 sm:py-16'>
           <SectionHeading
             eyebrow='Start here'
             title='Featured patterns'
@@ -227,7 +235,7 @@ export function HomePage() {
       </section>
 
       {/* Categories */}
-      <section className='mx-auto max-w-6xl px-4 py-16'>
+      <section className='mx-auto max-w-6xl px-4 py-12 sm:py-16'>
         <SectionHeading
           eyebrow='Categories'
           title='Organized by practical usefulness'
@@ -253,18 +261,18 @@ export function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className='mx-auto max-w-6xl px-4 py-16'>
-        <div className='rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-12 shadow-sm md:px-10'>
-          <h2 className='text-4xl font-bold text-[var(--color-text)]'>
+      <section className='mx-auto max-w-6xl px-4 py-12 sm:py-16'>
+        <div className='rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-10 shadow-sm sm:py-12 md:px-10'>
+          <h2 className='text-2xl font-bold text-[var(--color-text)] sm:text-3xl md:text-4xl'>
             Start learning patterns that stick.
           </h2>
 
-          <p className='mt-4 max-w-2xl text-lg text-[var(--color-text-muted)]'>
+          <p className='mt-4 max-w-2xl text-base text-[var(--color-text-muted)] sm:text-lg'>
             Browse the library, compare confusing patterns, or take the quiz to
             practice recognition through realistic scenarios.
           </p>
 
-          <div className='mt-6 flex flex-wrap gap-3'>
+          <div className='mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap'>
             <Link
               to='/patterns'
               className='rounded-lg bg-[var(--color-primary)] px-5 py-3 text-sm font-medium text-[var(--color-primary-foreground)] transition hover:opacity-90'

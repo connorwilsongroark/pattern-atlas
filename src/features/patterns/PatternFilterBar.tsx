@@ -41,10 +41,10 @@ export function PatternFilterBar({
   }
 
   return (
-    <section className='rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-sm'>
-      <div className='grid gap-4 lg:grid-cols-[2fr_1fr_1fr_1fr_auto]'>
+    <section className='rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-sm sm:p-5'>
+      <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr_auto]'>
         {/* Search */}
-        <div>
+        <div className='sm:col-span-2 lg:col-span-1'>
           <label
             htmlFor='pattern-search'
             className='mb-1 block text-sm font-medium text-[var(--color-text-muted)]'
@@ -63,14 +63,10 @@ export function PatternFilterBar({
 
         {/* Category */}
         <div>
-          <label
-            htmlFor='pattern-category'
-            className='mb-1 block text-sm font-medium text-[var(--color-text-muted)]'
-          >
+          <label className='mb-1 block text-sm font-medium text-[var(--color-text-muted)]'>
             Category
           </label>
           <select
-            id='pattern-category'
             value={filters.category}
             onChange={handleCategoryChange}
             className='w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-[var(--color-text)] outline-none transition focus:border-[var(--color-text-muted)]'
@@ -84,14 +80,10 @@ export function PatternFilterBar({
 
         {/* Career level */}
         <div>
-          <label
-            htmlFor='pattern-career-level'
-            className='mb-1 block text-sm font-medium text-[var(--color-text-muted)]'
-          >
+          <label className='mb-1 block text-sm font-medium text-[var(--color-text-muted)]'>
             Career level
           </label>
           <select
-            id='pattern-career-level'
             value={filters.careerLevel}
             onChange={handleCareerLevelChange}
             className='w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-[var(--color-text)] outline-none transition focus:border-[var(--color-text-muted)]'
@@ -105,14 +97,10 @@ export function PatternFilterBar({
 
         {/* Difficulty */}
         <div>
-          <label
-            htmlFor='pattern-difficulty'
-            className='mb-1 block text-sm font-medium text-[var(--color-text-muted)]'
-          >
+          <label className='mb-1 block text-sm font-medium text-[var(--color-text-muted)]'>
             Difficulty
           </label>
           <select
-            id='pattern-difficulty'
             value={filters.difficulty}
             onChange={handleDifficultyChange}
             className='w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-[var(--color-text)] outline-none transition focus:border-[var(--color-text-muted)]'
@@ -125,7 +113,7 @@ export function PatternFilterBar({
         </div>
 
         {/* Reset button */}
-        <div className='flex items-end'>
+        <div className='flex items-end sm:col-span-2 lg:col-span-1'>
           <button
             type='button'
             onClick={onReset}

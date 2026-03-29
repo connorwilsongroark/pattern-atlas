@@ -17,18 +17,20 @@ function SectionCard({
   children: React.ReactNode;
 }) {
   return (
-    <section className='rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm'>
-      <h2 className='mb-3 text-xl font-semibold text-[var(--color-text)]'>
+    <section className='rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm sm:p-6'>
+      <h2 className='mb-3 text-lg font-semibold text-[var(--color-text)] sm:text-xl'>
         {title}
       </h2>
-      <div className='text-[var(--color-text-muted)]'>{children}</div>
+      <div className='text-sm text-[var(--color-text-muted)] sm:text-base'>
+        {children}
+      </div>
     </section>
   );
 }
 
 function BulletList({ items }: { items: string[] }) {
   return (
-    <ul className='list-disc space-y-2 pl-5'>
+    <ul className='list-disc space-y-2 pl-5 text-sm sm:text-base'>
       {items.map((item) => (
         <li key={item}>{item}</li>
       ))}
@@ -39,7 +41,7 @@ function BulletList({ items }: { items: string[] }) {
 // The page content associated with an individual design pattern. Details all data relevant to the selected design pattern.
 export function PatternDetail({ pattern }: PatternDetailProps) {
   return (
-    <div className='mx-auto max-w-4xl space-y-6 px-4 py-8'>
+    <div className='mx-auto max-w-4xl space-y-6 px-4 py-8 sm:space-y-8'>
       <header className='space-y-4'>
         <div className='flex flex-wrap gap-2'>
           <Badge>{pattern.category}</Badge>
@@ -48,17 +50,17 @@ export function PatternDetail({ pattern }: PatternDetailProps) {
         </div>
 
         <div>
-          <h1 className='text-4xl font-bold tracking-tight text-[var(--color-text)]'>
+          <h1 className='text-3xl font-bold tracking-tight text-[var(--color-text)] sm:text-4xl'>
             {pattern.name}
           </h1>
-          <p className='mt-3 text-lg leading-8 text-[var(--color-text-muted)]'>
+          <p className='mt-3 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8'>
             {pattern.summary}
           </p>
         </div>
       </header>
 
       <SectionCard title='Key takeaway'>
-        <p className='text-lg font-medium text-[var(--color-text)]'>
+        <p className='text-base font-medium text-[var(--color-text)] sm:text-lg'>
           {pattern.keyTakeaway}
         </p>
       </SectionCard>
@@ -71,7 +73,7 @@ export function PatternDetail({ pattern }: PatternDetailProps) {
         <p>{pattern.solution}</p>
       </SectionCard>
 
-      <div className='grid gap-6 md:grid-cols-2'>
+      <div className='grid gap-5 sm:gap-6 md:grid-cols-2'>
         <SectionCard title='When to use'>
           <BulletList items={pattern.whenToUse} />
         </SectionCard>
@@ -81,7 +83,7 @@ export function PatternDetail({ pattern }: PatternDetailProps) {
         </SectionCard>
       </div>
 
-      <div className='grid gap-6 md:grid-cols-2'>
+      <div className='grid gap-5 sm:gap-6 md:grid-cols-2'>
         <SectionCard title='Benefits'>
           <BulletList items={pattern.benefits} />
         </SectionCard>
@@ -119,7 +121,7 @@ export function PatternDetail({ pattern }: PatternDetailProps) {
         </SectionCard>
       )}
 
-      <div className='grid gap-6 md:grid-cols-2'>
+      <div className='grid gap-5 sm:gap-6 md:grid-cols-2'>
         <SectionCard title='Related patterns'>
           {pattern.relatedPatterns.length > 0 ? (
             <div className='flex flex-wrap gap-2'>
@@ -167,7 +169,7 @@ export function PatternDetail({ pattern }: PatternDetailProps) {
                   <Link
                     key={relatedPattern.slug}
                     to={`/compare/${pattern.slug}/${relatedPattern.slug}`}
-                    className='inline-flex rounded-lg border border-[var(--color-border)] px-3 py-2 text-sm font-medium text-[var(--color-text-muted)] transition hover:bg-[var(--color-surface-alt)] hover:text-[var(--color-text)]'
+                    className='inline-flex w-full justify-center rounded-lg border border-[var(--color-border)] px-3 py-2 text-sm font-medium text-[var(--color-text-muted)] transition hover:bg-[var(--color-surface-alt)] hover:text-[var(--color-text)] sm:w-auto'
                   >
                     Compare with {relatedPattern.name}
                   </Link>

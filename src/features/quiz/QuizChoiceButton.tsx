@@ -18,7 +18,7 @@ export function QuizChoiceButton({
   showResult,
 }: QuizChoiceButtonProps) {
   let className =
-    "w-full rounded-xl border px-4 py-3 text-left text-sm font-medium transition";
+    "w-full rounded-xl border px-4 py-3 text-left text-sm font-medium leading-6 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2";
 
   if (!showResult) {
     className += isSelected
@@ -42,7 +42,7 @@ export function QuizChoiceButton({
       disabled={disabled}
       className={className}
     >
-      {choice}
+      <span className='block break-words'>{choice}</span>
     </button>
   );
 }

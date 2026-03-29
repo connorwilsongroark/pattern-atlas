@@ -27,10 +27,11 @@ export function QuizCard({
     () => shuffleArray(question.choices),
     [question.id],
   );
+
   const isCorrect = selectedChoice === question.correctAnswer;
 
   return (
-    <Card className='p-6'>
+    <Card className='p-5 sm:p-6'>
       <div className='mb-4 flex flex-wrap items-center gap-2'>
         <Badge>Question {questionNumber}</Badge>
         <Badge>{question.category}</Badge>
@@ -41,11 +42,11 @@ export function QuizCard({
         {questionNumber} of {totalQuestions}
       </div>
 
-      <h1 className='text-2xl font-semibold leading-8 text-[var(--color-text)]'>
+      <h1 className='text-xl font-semibold leading-7 text-[var(--color-text)] sm:text-2xl sm:leading-8'>
         {question.prompt}
       </h1>
 
-      <div className='mt-6 space-y-3'>
+      <div className='mt-5 space-y-3 sm:mt-6'>
         {shuffledChoices.map((choice) => (
           <QuizChoiceButton
             key={choice}
@@ -65,7 +66,7 @@ export function QuizCard({
       </div>
 
       {isSubmitted && selectedChoice && (
-        <div className='mt-6'>
+        <div className='mt-5 sm:mt-6'>
           <QuizResult
             isCorrect={isCorrect}
             correctAnswer={question.correctAnswer}

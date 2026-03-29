@@ -6,29 +6,33 @@ import { PatternDetail } from "../features/patterns/PatternDetail";
 export function PatternDetailPage() {
   const { slug } = useParams<{ slug: string }>();
 
-  // Fetch the pattern data by the slug from the URL. Otherwise, return a "missing pattern" message
   const pattern = slug ? getPatternBySlug(slug) : undefined;
 
   if (!pattern) {
     return (
-      <div className='mx-auto max-w-3xl px-4 py-12'>
-        <h1 className='text-3xl font-bold text-[var(--color-text)]'>
-          Pattern not found
-        </h1>
-        <p className='mt-3 text-[var(--color-text-muted)]'>
-          We couldn&apos;t find a pattern for slug:{" "}
-          <span className='font-mono text-[var(--color-text)]'>{slug}</span>
-        </p>
-        <Link
-          to='/patterns'
-          className='mt-6 inline-block rounded-lg bg-[var(--color-primary)] px-4 py-2 text-[var(--color-primary-foreground)] transition hover:opacity-90'
-        >
-          Back to patterns
-        </Link>
+      <div className='mx-auto max-w-3xl px-4 py-10 sm:py-12'>
+        <div className='space-y-4'>
+          <h1 className='text-2xl font-bold text-[var(--color-text)] sm:text-3xl'>
+            Pattern not found
+          </h1>
+
+          <p className='text-sm text-[var(--color-text-muted)] sm:text-base'>
+            We couldn&apos;t find a pattern for slug:{" "}
+            <span className='font-mono text-[var(--color-text)] break-words'>
+              {slug}
+            </span>
+          </p>
+
+          <Link
+            to='/patterns'
+            className='inline-block rounded-lg bg-[var(--color-primary)] px-4 py-2 text-sm text-[var(--color-primary-foreground)] transition hover:opacity-90 sm:text-base'
+          >
+            Back to patterns
+          </Link>
+        </div>
       </div>
     );
   }
 
-  // If the pattern was found, pass the pattern data to the PatternDetail component to render the page
   return <PatternDetail pattern={pattern} />;
 }

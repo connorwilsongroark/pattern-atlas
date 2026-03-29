@@ -27,7 +27,7 @@ function StagePatternList({ slugs }: StagePatternListProps) {
             <Badge>{pattern.careerLevel}</Badge>
           </div>
 
-          <h3 className='text-lg font-semibold text-[var(--color-text)]'>
+          <h3 className='text-base font-semibold text-[var(--color-text)] sm:text-lg'>
             {pattern.name}
           </h3>
 
@@ -56,26 +56,26 @@ function LearningStage({
   slugs,
 }: LearningStageProps) {
   return (
-    <section className='space-y-6'>
+    <section className='space-y-5 sm:space-y-6'>
       <div className='space-y-3'>
         <p className='text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-text-muted)]'>
           {eyebrow}
         </p>
-        <h2 className='text-3xl font-bold tracking-tight text-[var(--color-text)]'>
+        <h2 className='text-2xl font-bold tracking-tight text-[var(--color-text)] sm:text-3xl'>
           {title}
         </h2>
-        <p className='max-w-3xl text-lg leading-8 text-[var(--color-text-muted)]'>
+        <p className='max-w-3xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8'>
           {summary}
         </p>
       </div>
 
-      <Card className='p-6'>
+      <Card className='p-5 sm:p-6'>
         <div className='grid gap-6 lg:grid-cols-[1.1fr_1.4fr]'>
           <div>
-            <h3 className='text-lg font-semibold text-[var(--color-text)]'>
+            <h3 className='text-base font-semibold text-[var(--color-text)] sm:text-lg'>
               What to focus on
             </h3>
-            <ul className='mt-4 list-disc space-y-2 pl-5 text-[var(--color-text-muted)]'>
+            <ul className='mt-4 list-disc space-y-2 pl-5 text-sm text-[var(--color-text-muted)] sm:text-base'>
               {goals.map((goal) => (
                 <li key={goal}>{goal}</li>
               ))}
@@ -83,7 +83,7 @@ function LearningStage({
           </div>
 
           <div>
-            <h3 className='text-lg font-semibold text-[var(--color-text)]'>
+            <h3 className='text-base font-semibold text-[var(--color-text)] sm:text-lg'>
               Recommended patterns
             </h3>
             <div className='mt-4'>
@@ -98,16 +98,16 @@ function LearningStage({
 
 export function LearningPathPage() {
   return (
-    <div className='mx-auto max-w-6xl space-y-16 px-4 py-10'>
-      <header className='space-y-6'>
+    <div className='mx-auto max-w-6xl space-y-12 px-4 py-8 sm:space-y-16 sm:py-10'>
+      <header className='space-y-5 sm:space-y-6'>
         <div className='space-y-3'>
           <p className='text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-text-muted)]'>
             Structured learning
           </p>
-          <h1 className='text-4xl font-bold tracking-tight text-[var(--color-text)] md:text-5xl'>
+          <h1 className='text-3xl font-bold tracking-tight text-[var(--color-text)] sm:text-4xl md:text-5xl'>
             A practical learning path for design patterns
           </h1>
-          <p className='max-w-3xl text-lg leading-8 text-[var(--color-text-muted)]'>
+          <p className='max-w-3xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8'>
             This path is designed to help you learn patterns in a useful order:
             first the ones you will actually see and apply, then the ones that
             organize more complex systems, and finally the architectural
@@ -115,13 +115,13 @@ export function LearningPathPage() {
           </p>
         </div>
 
-        <MutedPanel className='p-5'>
+        <MutedPanel className='p-4 sm:p-5'>
           <div className='grid gap-4 md:grid-cols-3'>
             <div>
               <p className='text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]'>
                 Stage 1
               </p>
-              <p className='mt-2 text-[var(--color-text)]'>
+              <p className='mt-2 text-sm text-[var(--color-text)] sm:text-base'>
                 Learn to recognize and apply foundational patterns.
               </p>
             </div>
@@ -129,7 +129,7 @@ export function LearningPathPage() {
               <p className='text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]'>
                 Stage 2
               </p>
-              <p className='mt-2 text-[var(--color-text)]'>
+              <p className='mt-2 text-sm text-[var(--color-text)] sm:text-base'>
                 Learn to organize behavior, workflows, and data access cleanly.
               </p>
             </div>
@@ -137,7 +137,7 @@ export function LearningPathPage() {
               <p className='text-sm font-semibold uppercase tracking-wide text-[var(--color-text-muted)]'>
                 Stage 3
               </p>
-              <p className='mt-2 text-[var(--color-text)]'>
+              <p className='mt-2 text-sm text-[var(--color-text)] sm:text-base'>
                 Learn the patterns that matter in larger, more distributed
                 systems.
               </p>
@@ -205,43 +205,43 @@ export function LearningPathPage() {
         ]}
       />
 
-      <section className='space-y-6'>
+      <section className='space-y-5 sm:space-y-6'>
         <div className='space-y-3'>
           <p className='text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-text-muted)]'>
             Study advice
           </p>
-          <h2 className='text-3xl font-bold tracking-tight text-[var(--color-text)]'>
-            How to get the most out of the library
+          <h2 className='text-2xl font-bold tracking-tight text-[var(--color-text)] sm:text-3xl'>
+            How to get the most out of Pattern Atlas
           </h2>
         </div>
 
-        <Card className='p-6'>
+        <Card className='p-5 sm:p-6'>
           <div className='grid gap-6 md:grid-cols-3'>
             <div>
-              <h3 className='text-lg font-semibold text-[var(--color-text)]'>
+              <h3 className='text-base font-semibold text-[var(--color-text)] sm:text-lg'>
                 1. Learn in clusters
               </h3>
-              <p className='mt-2 text-[var(--color-text-muted)]'>
+              <p className='mt-2 text-sm text-[var(--color-text-muted)] sm:text-base'>
                 Study patterns that are commonly confused with each other, like
                 Strategy vs State or Adapter vs Facade.
               </p>
             </div>
 
             <div>
-              <h3 className='text-lg font-semibold text-[var(--color-text)]'>
+              <h3 className='text-base font-semibold text-[var(--color-text)] sm:text-lg'>
                 2. Focus on use cases
               </h3>
-              <p className='mt-2 text-[var(--color-text-muted)]'>
+              <p className='mt-2 text-sm text-[var(--color-text-muted)] sm:text-base'>
                 Do not just memorize definitions. Ask what problem the pattern
                 solves and what signals suggest using it.
               </p>
             </div>
 
             <div>
-              <h3 className='text-lg font-semibold text-[var(--color-text)]'>
+              <h3 className='text-base font-semibold text-[var(--color-text)] sm:text-lg'>
                 3. Test yourself
               </h3>
-              <p className='mt-2 text-[var(--color-text-muted)]'>
+              <p className='mt-2 text-sm text-[var(--color-text-muted)] sm:text-base'>
                 Use the quiz to strengthen recognition, then come back to
                 compare patterns side by side when distinctions are fuzzy.
               </p>
@@ -251,19 +251,19 @@ export function LearningPathPage() {
       </section>
 
       <section>
-        <Card className='p-8'>
+        <Card className='p-6 sm:p-8'>
           <div className='flex flex-col gap-4 md:flex-row md:items-center md:justify-between'>
             <div className='max-w-2xl'>
               <h2 className='text-2xl font-bold tracking-tight text-[var(--color-text)]'>
                 Ready to start?
               </h2>
-              <p className='mt-2 text-[var(--color-text-muted)]'>
+              <p className='mt-2 text-sm text-[var(--color-text-muted)] sm:text-base'>
                 Browse the full library, compare similar patterns, or practice
                 with the quiz.
               </p>
             </div>
 
-            <div className='flex flex-wrap gap-3'>
+            <div className='flex flex-col gap-3 sm:flex-row sm:flex-wrap'>
               <Button to='/patterns'>Browse patterns</Button>
               <Button to='/quiz' variant='secondary'>
                 Take the quiz

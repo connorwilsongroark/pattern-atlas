@@ -27,6 +27,11 @@ import { serviceLocatorPattern } from "./serviceLocator";
 import { singletonPattern } from "./singleton";
 import { specificationPattern } from "./specification";
 import { templateMethodPattern } from "./templateMethod";
+import { antiCorruptionLayerPattern } from "./antiCorruptionLayer";
+import { cacheAsidePattern } from "./cacheAside";
+import { chainOfResponsibilityPattern } from "./chainOfResponsibility";
+import { mediatorPattern } from "./mediator";
+import { retryPattern } from "./retry";
 
 // Expose list of patterns to the application
 export const patterns: Pattern[] = [
@@ -36,6 +41,8 @@ export const patterns: Pattern[] = [
   observerPubSubPattern,
   commandPattern,
   statePattern,
+  chainOfResponsibilityPattern,
+  mediatorPattern,
   dependencyInjectionPattern,
   decoratorPattern,
   proxyPattern,
@@ -47,6 +54,9 @@ export const patterns: Pattern[] = [
   facadePattern,
   adapterPattern,
   portsAndAdaptersPattern,
+  antiCorruptionLayerPattern,
+  cacheAsidePattern,
+  retryPattern,
   circuitBreakerPattern,
   cqrsPattern,
   domainEventsPattern,

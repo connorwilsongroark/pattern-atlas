@@ -17,27 +17,47 @@ import { statePattern } from "./state";
 import { strategyPattern } from "./strategy";
 import { unitOfWorkPattern } from "./unitOfWork";
 import { visitorPattern } from "./visitor";
+import { eventSourcingPattern } from "./eventSourcing";
+import { flyweightPattern } from "./flyweight";
+import { portsAndAdaptersPattern } from "./portsAndAdapters";
+import { prototypePattern } from "./prototype";
+import { proxyPattern } from "./proxy";
+import { sagaPattern } from "./saga";
+import { serviceLocatorPattern } from "./serviceLocator";
+import { singletonPattern } from "./singleton";
+import { specificationPattern } from "./specification";
+import { templateMethodPattern } from "./templateMethod";
 
 // Expose list of patterns to the application
 export const patterns: Pattern[] = [
   strategyPattern,
   factoryMethodPattern,
+  templateMethodPattern,
   observerPubSubPattern,
   commandPattern,
   statePattern,
   dependencyInjectionPattern,
   decoratorPattern,
+  proxyPattern,
   serviceLayerPattern,
+  repositoryPattern,
+  specificationPattern,
   unitOfWorkPattern,
   builderPattern,
-  circuitBreakerPattern,
-  visitorPattern,
-  repositoryPattern,
   facadePattern,
   adapterPattern,
+  portsAndAdaptersPattern,
+  circuitBreakerPattern,
   cqrsPattern,
   domainEventsPattern,
   outboxPattern,
+  sagaPattern,
+  eventSourcingPattern,
+  singletonPattern,
+  prototypePattern,
+  flyweightPattern,
+  serviceLocatorPattern,
+  visitorPattern,
 ];
 
 /** Get the pattern by the supplied string */

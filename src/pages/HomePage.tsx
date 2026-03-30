@@ -96,25 +96,6 @@ function CategoryCard({
   );
 }
 
-function LearningStep({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className='rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm sm:p-6'>
-      <h3 className='text-lg font-semibold text-[var(--color-text)] sm:text-xl'>
-        {title}
-      </h3>
-      <p className='mt-3 text-sm text-[var(--color-text-muted)] sm:text-base'>
-        {description}
-      </p>
-    </div>
-  );
-}
-
 export function HomePage() {
   const featuredPatterns = patterns.filter((pattern) =>
     featuredSlugs.includes(pattern.slug),

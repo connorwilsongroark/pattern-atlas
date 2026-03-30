@@ -163,6 +163,8 @@ export function LearningPathPage() {
           "factory-method",
           "dependency-injection",
           "builder",
+          "proxy",
+          "template-method",
         ]}
       />
 
@@ -179,10 +181,12 @@ export function LearningPathPage() {
         slugs={[
           "decorator",
           "state",
-          "service-layer",
-          "repository",
           "command",
           "observer-pub-sub",
+          "chain-of-responsibility",
+          "service-layer",
+          "repository",
+          "specification",
         ]}
       />
 
@@ -198,10 +202,15 @@ export function LearningPathPage() {
         ]}
         slugs={[
           "unit-of-work",
+          "ports-and-adapters",
+          "anti-corruption-layer",
           "domain-events",
-          "cqrs",
           "outbox-pattern",
+          "cqrs",
+          "retry",
+          "cache-aside",
           "circuit-breaker",
+          "saga",
         ]}
       />
 

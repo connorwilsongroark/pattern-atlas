@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { footerNavItems } from "./navItems";
+import { PatternAtlasLogo } from "../branding/PatternAtlasLogo";
 
 export function SiteFooter() {
   return (
@@ -7,10 +8,17 @@ export function SiteFooter() {
       <div className='mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:gap-10 sm:py-12 md:grid-cols-[1.5fr_1fr_1fr]'>
         <div className='space-y-4'>
           <div>
-            <p className='text-sm font-semibold uppercase tracking-[0.18em] text-[var(--color-text-muted)]'>
-              Pattern Atlas
-            </p>
-            <h2 className='mt-2 text-xl font-bold tracking-tight text-[var(--color-text)] sm:text-2xl'>
+            <div className='flex items-center gap-2 text-[var(--color-text)]'>
+              <PatternAtlasLogo
+                variant='small'
+                className='h-10 w-10 shrink-0'
+              />
+              <p className='text-xl font-semibold tracking-tight text-[var(--color-text)]'>
+                Pattern Atlas
+              </p>
+            </div>
+
+            <h2 className='text-xl font-bold tracking-tight text-[var(--color-text)] sm:text-2xl'>
               Learn patterns in a way that actually sticks.
             </h2>
           </div>

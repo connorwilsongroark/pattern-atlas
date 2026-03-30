@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { patterns } from "../content/patterns";
 import { PatternCard } from "../features/patterns/PatternCard";
+import { PatternAtlasLogo } from "../components/branding/PatternAtlasLogo";
 
 const featuredSlugs = ["strategy", "adapter", "repository", "cqrs"];
 
@@ -104,8 +105,17 @@ export function HomePage() {
   return (
     <div className='bg-[var(--color-bg)] text-[var(--color-text)]'>
       {/* Hero */}
-      <section className='border-b border-[var(--color-border)] bg-[var(--color-surface)]'>
-        <div className='mx-auto max-w-6xl px-4 py-14 sm:py-20'>
+      <section className='relative overflow-hidden border-b border-[var(--color-border)] bg-[var(--color-surface)]'>
+        <div className='absolute inset-0 pointer-events-none'>
+          <div className='absolute right-[-1.5rem] top-[40%] -translate-y-1/2 sm:right-4 sm:top-1/2 md:right-8 lg:right-16'>
+            <PatternAtlasLogo
+              variant='small'
+              className='h-40 w-40  text-[var(--color-text-muted)] opacity-[0.06] sm:h-56 sm:w-56 sm:opacity-[0.05] md:h-72 md:w-72 md:opacity-[0.045] lg:h-[24rem] lg:w-[24rem] dark:opacity-[0.08] sm:dark:opacity-[0.07] md:dark:opacity-[0.06]'
+            />
+          </div>
+        </div>
+
+        <div className='relative z-10 mx-auto max-w-6xl px-4 py-14 sm:py-20'>
           <div className='max-w-4xl space-y-8'>
             <p className='text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-text-muted)]'>
               Practical software architecture
@@ -167,6 +177,69 @@ export function HomePage() {
           </div>
         </div>
       </section>
+      {/* <section className='border-b border-[var(--color-border)] bg-[var(--color-surface)]'>
+        <div className='mx-auto max-w-6xl px-4 py-14 sm:py-20'>
+          <div className='max-w-4xl space-y-8'>
+            <p className='text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-text-muted)]'>
+              Practical software architecture
+            </p>
+
+            <div className='space-y-5'>
+              <h1 className='text-3xl font-bold tracking-tight text-[var(--color-text)] sm:text-4xl md:text-6xl'>
+                Learn design patterns the way developers actually use them.
+              </h1>
+
+              <p className='max-w-3xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8'>
+                Pattern Atlas is a practical reference for software design
+                patterns, with categorized explanations, side-by-side
+                comparisons, and interactive quizzes to help the ideas stick.
+              </p>
+            </div>
+
+            <div className='flex flex-col gap-3 sm:flex-row sm:flex-wrap'>
+              <Link
+                to='/patterns'
+                className='rounded-lg bg-[var(--color-primary)] px-5 py-3 text-sm font-medium text-[var(--color-primary-foreground)] transition hover:opacity-90'
+              >
+                Browse patterns
+              </Link>
+              <Link
+                to='/quiz'
+                className='rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3 text-sm font-medium text-[var(--color-text)] transition hover:bg-[var(--color-surface-alt)]'
+              >
+                Take the quiz
+              </Link>
+            </div>
+
+            <div className='grid gap-3 pt-4 sm:gap-4 md:grid-cols-3'>
+              <div className='rounded-xl bg-[var(--color-surface-alt)] p-4'>
+                <p className='text-2xl font-bold text-[var(--color-text)]'>
+                  {patterns.length}
+                </p>
+                <p className='mt-1 text-sm text-[var(--color-text-muted)]'>
+                  patterns in the library
+                </p>
+              </div>
+              <div className='rounded-xl bg-[var(--color-surface-alt)] p-4'>
+                <p className='text-2xl font-bold text-[var(--color-text)]'>
+                  Compare
+                </p>
+                <p className='mt-1 text-sm text-[var(--color-text-muted)]'>
+                  similar patterns side by side
+                </p>
+              </div>
+              <div className='rounded-xl bg-[var(--color-surface-alt)] p-4'>
+                <p className='text-2xl font-bold text-[var(--color-text)]'>
+                  Quiz
+                </p>
+                <p className='mt-1 text-sm text-[var(--color-text-muted)]'>
+                  practice pattern recognition
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> */}
 
       {/* Feature Cards */}
       <section className='mx-auto max-w-6xl px-4 py-12 sm:py-16'>

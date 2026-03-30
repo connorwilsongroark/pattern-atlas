@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "../ui/ThemeToggle";
 import { headerNavItems } from "./navItems";
+import { PatternAtlasWordmark } from "../branding/PatternAtlasWordmark";
 
 type NavItemProps = {
   to: string;
@@ -62,7 +63,8 @@ export function SiteHeader() {
               className='min-w-0 flex items-center gap-3'
               onClick={closeMenu}
             >
-              <div className='flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--color-primary)] text-sm font-bold text-[var(--color-primary-foreground)]'>
+              <PatternAtlasWordmark />
+              {/* <div className='flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--color-primary)] text-sm font-bold text-[var(--color-primary-foreground)]'>
                 PA
               </div>
 
@@ -73,7 +75,7 @@ export function SiteHeader() {
                 <p className='hidden text-sm text-[var(--color-text-muted)] sm:block'>
                   Practical design patterns
                 </p>
-              </div>
+              </div> */}
             </NavLink>
 
             <div className='flex items-center gap-2 sm:gap-3'>

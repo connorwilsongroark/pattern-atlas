@@ -1,69 +1,178 @@
-# React + TypeScript + Vite
+# Pattern Atlas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Pattern Atlas is an interactive learning platform for exploring software design patterns through structured explanations, comparisons, quizzes, and guided learning paths.
 
-Currently, two official plugins are available:
+Rather than functioning as a simple reference list, Pattern Atlas focuses on helping developers understand:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- when patterns should be used
+- why they exist
+- their tradeoffs
+- how they compare to similar patterns
+- where they fit into real-world software architecture
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Pattern Library
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Browse software design patterns organized by:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- category
+- difficulty
+- career level
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Each pattern includes:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- summaries
+- problems and solutions
+- benefits and tradeoffs
+- usage guidance
+- related patterns
+- code examples
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+### Pattern Comparison
+
+Compare patterns side-by-side to better understand:
+
+- differences in intent
+- overlapping use cases
+- implementation tradeoffs
+- commonly confused concepts
+
+---
+
+### Interactive Quiz
+
+Reinforce understanding through a multiple-choice quiz designed to test conceptual understanding rather than memorization.
+
+---
+
+### Guided Learning Paths
+
+Patterns are categorized by:
+
+- Must Know
+- Good to Know
+- De-Emphasized
+
+As well as:
+
+- Beginner
+- Intermediate
+- Advanced
+
+And career level:
+
+- Early
+- Mid
+- Senior
+
+This allows developers to progressively build architectural knowledge without becoming overwhelmed.
+
+---
+
+## Tech Stack
+
+### Frontend
+
+- React
+- TypeScript
+- Tailwind CSS
+
+### UI & Tooling
+
+- Lucide Icons
+
+### Deployment
+
+- GitHub Pages
+
+---
+
+## Project Goals
+
+Pattern Atlas was built to explore:
+
+- scalable front-end architecture
+- reusable component systems
+- educational UX design
+- structured content modeling
+- maintainable TypeScript-driven data systems
+
+The project emphasizes clarity, maintainability, and developer experience.
+
+---
+
+## Architecture Highlights
+
+### Structured Pattern Schema
+
+Patterns are modeled using strongly-typed TypeScript objects containing:
+
+- metadata
+- conceptual explanations
+- tradeoffs
+- related patterns
+- code examples
+- learning guidance
+
+This enables scalable content organization and future expansion.
+
+---
+
+### Component-Driven UI
+
+The interface is built around reusable components and layouts to maintain consistency and scalability across the application.
+
+---
+
+### Route-Based Content Organization
+
+The application uses dynamic routing for:
+
+- pattern detail pages
+- comparison pages
+- quizzes
+- learning paths
+
+---
+
+## Example Topics Covered
+
+- Singleton
+- Factory
+- Strategy
+- Observer
+- Repository
+- Dependency Injection
+- Adapter
+- Command
+- Mediator
+- Builder
+
+And many more.
+
+---
+
+## Future Improvements
+
+Potential future enhancements include:
+
+- bookmarking/favorites
+- spaced repetition quizzes
+- backend persistence
+- user accounts
+- progress tracking
+- pattern diagrams and visualizations
+
+---
+
+## Running Locally
+
+```bash
+npm install
+npm run dev
 ```
